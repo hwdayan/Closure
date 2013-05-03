@@ -19,14 +19,14 @@
         {
            if (Global.dictionary.Count == 0)
             {
-                FileStream fs = new FileStream(Path.GetFullPath( Server.MapPath(".")+"/Dictionary.txt"), FileMode.Open);
+                FileStream fs = new FileStream(Server.MapPath("Dictionary.txt"), FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
                 List<string> words = new List<string>();
                 while (sr.Peek() >= 0)
                 {
                     Global.dictionary.Add(sr.ReadLine());
                 }
-               // Response.Write("全域字典加入");
+                //Response.Write("全域字典加入");
             }
              sid.Value = Context.Session.SessionID;
             ////tag.Value= sid;
