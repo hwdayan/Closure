@@ -36,9 +36,9 @@
             $(document).ready(function () {
                setsize();
             });
-            $(window).resize(function () {
-                setsize()
-            });
+            //$(window).resize(function () {
+            //    setsize()
+            //});
             var title = new createjs.Text("Closure", "40px verdana", "#FFF");
             stage.addChild(title);
         }
