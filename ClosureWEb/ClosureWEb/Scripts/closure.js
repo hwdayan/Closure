@@ -3,7 +3,7 @@
           var sid = $("#sid").val();
        var chat = $.connection.liuro;
         //觸發位置XY ,訊號種類,布林亂數,隨機顏色,兩個0~1亂數
-       chat.client.broadcast = function (_x, _y, signal, b, rndColor, r1, r2, words,callerID) {
+       chat.client.broadcast = function (_x, _y, signal, b, rndColor, r1, r2, words,callerID,userColor) {
                 var s = new createjs.Shape();
                 var W = stage.canvas.width;
                 var H = stage.canvas.height;
@@ -18,15 +18,17 @@
                            stage.addChild(s);
                            fadeOut(s, 4000);
                             break;
-                       case 1: //sonar
+                   case 1: //sonar
+                       var txt = new createjs.Text("■" + callerID.substr(0, 10), "15px Arial", userColor);
                            var c = new lib.circle2();
-                           c.regX = 60.5;
-                            c.regY = 60.5;
-                            c.setTransform(_x, _y);
+                          txt.setTransform(_x-15 , _y-30);
+                           c.setTransform(_x - 70, _y - 70);
                             c.scaleX = 1 + r1 * 0.5;
                            c.scaleY = 1 + r1 * 0.5;
                            stage.addChild(c);
+                           stage.addChild(txt);
                            fadeOut(c, 1500);
+                           fadeOut(txt, 1500);
                             soundplay(["sonar"], callerID == sid ? 1 : 0.08);
                            // callerID == sid ? $("#count").val("本人呼叫") : $("#count").val(callerID+"呼叫");
                            break;
@@ -62,7 +64,7 @@
                                        }
                                     var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
                                     document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
-                               
+                                    $("#count").val(words);
                                 }
             
                             break;
@@ -98,14 +100,14 @@
                  g.mt(_x, _y);
                  dashedLine(g, _x, _y, dstX > 0.5 ? 0 : W, dstY > 0.5 ? 0 : H, 12);
                  stage.addChild(s);
-                 createjs.Tween.get(s).wait(200).to({ scaleX: 1.5, scaleY: 1.5 }, 3000);
-                 fadeOut(s, 3000);
+                 createjs.Tween.get(s).wait(200).to({ scaleX: 1.5, scaleY: 1.5 }, 5000);
+                 fadeOut(s, 5000);
                  soundplay(["beep"], 0.5);
                  break;
              case 6://animate text
                  var mode = b == true ? 1 : 2   //mode1 字串擴展 mode2字串縮減
                  var txt = new createjs.Text(genData(Math.round(r1 * 20)), "12px Arial", rndColor);
-                 txt.setTransform(_x, _y);
+                 txt.setTransform(_x, _y+30);
                  stage.addChild(txt);
                  var txtTween = createjs.Tween.get(txt);
                  txtTween.onChange = function () {
@@ -128,7 +130,7 @@
                  var lines = 15;
                  var glitchcolor = ["#36ff44", "#ff40ff", "#ffff2f", "#29ffdf", "3f52f2", "fff"];
                  var ctx = canvas.getContext("2d");
-                 var gg = document.getElementById("Img"+Math.round(Math.random()*6));
+                 var gg = document.getElementById("Img"+Math.round(Math.random()*14));
  
                  for (var i = 0; i < lines; i++) {
                          for (var j = 0; j < 5; j++) {
@@ -141,14 +143,16 @@
                              }
                      }
                  soundplay(["static"], 1, 0);
-                 if (Math.random() < 0.435) {
+                 if (Math.random() < 0.275) {
+                     var naturalWidth=gg.width==0?gg.naturalWidth:gg.width;
+                     var naturalHeight=gg.height==0?gg.naturalHeight:gg.height;
                          for (var i = 0; i < lines; i++) {
                                  for (var j = 0; j < 5; j++) {
                                          var sx, sy, sw, sh, x, y, w, h;
-                                         sx = Math.random() * gg.width;
-                                         sy = Math.random() * gg.height;
-                                         sw = gg.width / lines;
-                                         sh = gg.height / 5;
+                                         sx = Math.random() * naturalWidth;
+                                         sy = Math.random() * naturalHeight;
+                                         sw = naturalWidth / lines;
+                                         sh = naturalHeight / 5;
                                          x = i * W / lines;
                                          y = j * H / 5;
                                          w = W / lines;

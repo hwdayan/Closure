@@ -34,7 +34,17 @@
             createjs.Ticker.addListener(stage);
 
             $(document).ready(function () {
-                if (document.body && document.body.offsetWidth) {
+               setsize();
+            });
+            $(window).resize(function () {
+                setsize()
+            });
+            var title = new createjs.Text("Closure", "40px verdana", "#FFF");
+            stage.addChild(title);
+        }
+        function setsize()
+        {
+            if (document.body && document.body.offsetWidth) {
                     canvas.width = document.body.offsetWidth;
                     canvas.height = document.body.offsetHeight;
                 }
@@ -46,10 +56,6 @@
                 }
                 canvas.width = $(window).innerWidth();
                 canvas.height = $(window).innerHeight();
-            });
-
-            var title = new createjs.Text("Closure", "40px verdana", "#FFF");
-            stage.addChild(title);
         }
     </script>
     <link href="closure.css" rel="stylesheet" />
@@ -64,13 +70,21 @@
 	        <input id="cid" type="text" runat="server" />
         <input id="count" type="text" />
     </form>
-    <img id="Img0" src="images/google1.jpg" />
-    <img id="Img1" src="images/google2.jpg" />
-    <img id="Img2" src="images/google3.jpg" />
-    <img id="Img4" src="images/apollo1.jpg" />
-    <img id="Img3" src="images/apollo2.jpg" />
+    <img id="Img0" src="images/0-31.jpg" />
+    <img id="Img1" src="images/holiday-drone1.jpg" />
+    <img id="Img2" src="images/130319-hawthorne-army-depot-9a.jpg" />
+    <img id="Img3" src="images/20090207tomcatsoceana.jpg" />
+    <img id="Img4" src="images/20090619baercs.jpg" />
     <img id="Img5" src="images/base1.jpg" />
-    <img id="Img6" src="images/base2.jpg" />
+    <img id="Img6" src="images/google2.jpg" />
+    <img id="Img7" src="images/google3.jpg" />
+    <img id="Img8" src="images/google1.jpg" />
+    <img id="Img9" src="images/halifaxcitadel.jpg" />
+    <img id="Img10" src="images/DalienNavalShipyards.jpg" />
+    <img id="Img11" src="images/planes-big_1583925a.jpg" />
+    <img id="Img12" src="images/scale1.jpg" />
+    <img id="Img13" src="images/starthm4.jpg" />
+    <img id="Img14" src="images/UFO.jpg" />
     <div id="tts"></div>
 
 

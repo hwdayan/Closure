@@ -30,8 +30,8 @@
 	            bool b     =rnd.Next(2)==1?true:false;
 	            Color col = Color.FromArgb(rnd.Next(90), rnd.Next(90)+50, rnd.Next(90)+160);
 	            string rndColor = ColorTranslator.ToHtml(col);
-	            //string[] usercolors = { "#6dffff", "#FFB6FF", "#FFFA64", "#7BFFB9", "#AA6BFF" };
-	            //string userColor = usercolors[sid.GetHashCode() % 5];
+                string[] usercolors = { "#6dffff", "#FFB6FF", "#FFFA64", "#7BFFB9", "#AA6BFF" };
+                string userColor = usercolors[Math.Abs(sid.GetHashCode() % 5)];
                rngc.GetBytes(bta);
 	            double r1 = (double)bta[0] / 256.0;
 	            rngc.GetBytes(bta);
@@ -51,9 +51,9 @@
 	                }
 	            }
 	            if(signal==7)
-	             Clients.Caller.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID);
+	             Clients.Caller.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
 	            else
-	                Clients.All.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID);
+	                Clients.All.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
 	        }
 	        private string[] exclude()
 	        {

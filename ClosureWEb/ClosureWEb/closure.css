@@ -5,6 +5,7 @@
 	 {
 	     visibility:hidden;
 	     position:absolute;
+         display:none;
 	 }
 	 h1
 	 {
@@ -19,9 +20,7 @@
 	 }
 	 form
 	 {
-	     visibility:hidden;
+         /*display:none;
+	     visibility:hidden;*/
 	 }
-	 embed
-	 {
-	     display:none;
-	 }
+

@@ -26,7 +26,7 @@
                 {
                     Global.dictionary.Add(sr.ReadLine());
                 }
-                Response.Write("全域字典加入");
+               // Response.Write("全域字典加入");
             }
              sid.Value = Context.Session.SessionID;
             ////tag.Value= sid;
