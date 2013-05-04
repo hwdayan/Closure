@@ -165,10 +165,11 @@
                      }
          }
      };
-     var canvas = document.getElementById("canvas");
-     $.connection.hub.start().done(function () {
-         var W = stage.canvas.width;
-         var H = stage.canvas.height;
+ 
+       $.connection.hub.start().done(function () {
+           var canvas = document.getElementById("canvas");
+                var W = stage.canvas.width;
+                var H = stage.canvas.height;
              canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
              function getPosition(e) {
                      mouseX = e.x  - canvas.offsetLeft;
