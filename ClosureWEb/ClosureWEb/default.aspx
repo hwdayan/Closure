@@ -89,8 +89,8 @@
     <img id="Img12" src="images/scale1.jpg" />
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
-    <object id="tts"></object>
-
+    <div id="tts"></div>
+    <audio src="sound/horse.mp3" controls="controls" />
 
 
 </body>

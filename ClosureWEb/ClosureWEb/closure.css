@@ -1,6 +1,5 @@
 ﻿	 ﻿body {
-	     background-color:black;
-        
+	     background-color:black;        
 	 }
 	 img
 	 {
@@ -21,7 +20,12 @@
 	 }
 	 form
 	 {
-         display:none;
-	     visibility:hidden;
+         /*display:none;
+	     visibility:hidden;*/
 	 }
+     tts
+     {
+      display:none;
+	     visibility:hidden;
+     }
 
