@@ -1,4 +1,5 @@
-﻿   var chars = ["a", "s", "d", "j", "%", "$", "#", "^", "￠", "*", "¶", "4", "2", "8", "", ".", "X", "Y", " ", " "];
+﻿var chars = ["a", "s", "d", "j", "%", "$", "#", "^", "￠", "*", "¶", "4", "2", "8", "", ".", "X", "Y", " ", " "];
+var ipadmuted = true;
      $(function () {          
           var sid = $("#sid").val();
        var chat = $.connection.liuro;
@@ -178,6 +179,10 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
+                    if (ipadmuted == true) {
+                        createjs.Sound.play("/sound/beep.mp3");
+                        ipadmuted = false;
+                    }
                     mouseX = e.targetTouches[0].pageX;
                     mouseY = e.targetTouches[0].pageY;
                     chat.server.send(mouseX / W, mouseY / H);
