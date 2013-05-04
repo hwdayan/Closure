@@ -49,7 +49,7 @@ var ipadmuted = true;
                            s.graphics.f(rndColor).dp(_x, _y, 12, 3, 0.75, r1 * 360);
                             stage.addChild(s);
                            fadeOut(s, 1500);
-                           if (r2 < 0.05) {
+                           if (r2 < 0.25) {
                                     var txt = new createjs.Text(words, "15px Arial", rndColor);
                                   txt.setTransform(_x, _y + 10);
                                   stage.addChild(txt);
@@ -173,6 +173,7 @@ var ipadmuted = true;
                 var H = stage.canvas.height;
                 canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for ipad
+                canvas.addEventListener('touchmove', touchNoise, false); //for ipad
                 function getPosition(e) {
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
@@ -184,11 +185,43 @@ var ipadmuted = true;
                         sound.setVolume(1);
                         ipadmuted = false;
                     }
-                    mouseX = e.targetTouches[0].pageX;
-                    mouseY = e.targetTouches[0].pageY;
-                    chat.server.send(mouseX / W, mouseY / H);
+                    for (var i = 0; i < e.targetTouches.length; i++) {
+                        mouseX = e.targetTouches[i].pageX;
+                        mouseY = e.targetTouches[i].pageY;
+                        chat.server.send(mouseX / W, mouseY / H);
+                        if (i > 2) {
+                            touchNoise();
+                            break;
+                        }
+                    }
                 }
-         });
+          });
+       function touchNoise()
+       {
+           if (Math.random() < 0.3)
+           {
+               var lines = 15;
+               var ctx = canvas.getContext("2d");
+               var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
+               var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
+               var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
+               for (var i = 0; i < lines; i++) {
+                   for (var j = 0; j < 5; j++) {
+                       var sx, sy, sw, sh, x, y, w, h;
+                       sx = Math.random() * naturalWidth;
+                       sy = Math.random() * naturalHeight;
+                       sw = naturalWidth / lines;
+                       sh = naturalHeight / 5;
+                       x = i * W / lines;
+                       y = j * H / 5;
+                       w = W / lines;
+                       h = H / 5;
+                       ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+                   }
+               }
+               soundplay(["static"], 1, Math.random());
+           }
+       }
  
  });
  function fadeOut(elem, time) {

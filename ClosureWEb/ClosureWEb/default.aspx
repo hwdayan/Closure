@@ -70,8 +70,11 @@
         CID:
 	        <input id="cid" type="text" runat="server" />
         <input id="count" type="text" />
-    <audio src="\sound\beep.mp3" type="audio/mpeg" />
+  <%--  <audio src="\sound\beep.mp3" type="audio/mpeg" /--%>
     </form>
+    <img id="noise1" src="images/noise1.jpg" />
+    <img id="noise2" src="images/noise2.jpg" />
+    <img id="noise3" src="images/noise3.jpg" />
     <img id="Img0" src="images/0-31.jpg" />
     <img id="Img1" src="images/holiday-drone1.jpg" />
     <img id="Img2" src="images/130319-hawthorne-army-depot-9a.jpg" />

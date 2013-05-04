@@ -24,9 +24,28 @@
 	            var callerID = sid;
 	            Random rnd = new Random(DateTime.Now.Millisecond);
 	            RNGCryptoServiceProvider rngc = new RNGCryptoServiceProvider();
+              
 	            byte[] bta = new byte[1];
-	           
-	            int signal =rnd.Next(0,8);
+                rngc.GetBytes(bta);
+                int signal =  0;
+	            int _signal = bta[0] % 25; //0~24
+                if (_signal < 5)   //5/25垂直或水平座標線
+                    signal = 0;
+                if (_signal ==5||_signal==6)   //2/25聲納探測
+                    signal = 1;
+                if (_signal >6 && _signal<=10)   //4/25隨機數字+引線
+                    signal = 2;
+                if (_signal ==11)   //1/25 gooleTTS!!
+                    signal = 3;
+                if (_signal > 11&&_signal<=16)   //5/25 移動座標線
+                    signal = 4;
+                if (_signal > 16 &&_signal <= 19)   //3/25 虛線 
+                    signal = 5;
+                if (_signal > 19 && _signal <= 21)   //2/25 資料傳送 
+                    signal = 6;
+                if (_signal > 21 && _signal <= 24)   //3/25 Glich 
+                    signal = 7; 
+
 	            bool b     =rnd.Next(2)==1?true:false;
 	            Color col = Color.FromArgb(rnd.Next(90), rnd.Next(90)+50, rnd.Next(90)+160);
 	            string rndColor = ColorTranslator.ToHtml(col);
