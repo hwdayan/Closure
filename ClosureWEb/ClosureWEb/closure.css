@@ -1,5 +1,6 @@
 ﻿	 ﻿body {
 	     background-color:black;
+        
 	 }
 	 img
 	 {
@@ -20,7 +21,7 @@
 	 }
 	 form
 	 {
-         /*display:none;
-	     visibility:hidden;*/
+         display:none;
+	     visibility:hidden;
 	 }
 
