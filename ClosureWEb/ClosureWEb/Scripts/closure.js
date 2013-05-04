@@ -5,6 +5,7 @@ var ipadmuted = true;
        var chat = $.connection.liuro;
         //觸發位置XY ,訊號種類,布林亂數,隨機顏色,兩個0~1亂數
        chat.client.broadcast = function (_xRatio, _yRatio, signal, b, rndColor, r1, r2, words, callerID, userColor) {
+
                 var s = new createjs.Shape();
                 var W = stage.canvas.width;
                 var H = stage.canvas.height;
@@ -65,8 +66,7 @@ var ipadmuted = true;
                                           stage.removeChild(txt);
                                        }
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                                createjs.Sound.play("<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>");
-                                //    document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
+                            document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                 
                                     $("#count").val(words);
                                 }
             
