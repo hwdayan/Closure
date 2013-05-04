@@ -70,6 +70,7 @@
         CID:
 	        <input id="cid" type="text" runat="server" />
         <input id="count" type="text" />
+    <audio src="\sound\beep.mp3" type="audio/mpeg" />
     </form>
     <img id="Img0" src="images/0-31.jpg" />
     <img id="Img1" src="images/holiday-drone1.jpg" />
@@ -87,7 +88,6 @@
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
     <div id="tts"></div>
-    <audio src="\sound\beep.mp3" type="audio/mpeg" />
 
 
 </body>
