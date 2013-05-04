@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+ <%--   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />--%>
  <link href="closure.css" rel="stylesheet" />
     <title>Closure</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -36,9 +36,9 @@
             $(document).ready(function () {
                setsize();
             });
-            //$(window).resize(function () {
-            //    setsize()
-            //});
+            $(window).resize(function () {
+                setsize()
+            });
             var title = new createjs.Text("Closure", "40px verdana", "#FFF");
             stage.addChild(title);
         }
@@ -60,7 +60,7 @@
     </script>
     <link href="closure.css" rel="stylesheet" />
 </head>
-<body onload="init();">
+<body onload="init();" style="margin:0">
 
     <canvas id="canvas" runat="server"></canvas>
     <form id="form1" runat="server">

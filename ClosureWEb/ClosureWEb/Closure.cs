@@ -51,9 +51,9 @@
 	                }
 	            }
 	            if(signal==7)
-	             Clients.Caller.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
+	             Clients.Caller.broadcast(mouseX, mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
 	            else
-	                Clients.All.broadcast((int)mouseX, (int)mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
+	                Clients.All.broadcast(mouseX, mouseY, signal, b, rndColor, r1, r2, words,callerID,userColor);
 	        }
 	        private string[] exclude()
 	        {

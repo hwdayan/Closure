@@ -3,11 +3,12 @@
           var sid = $("#sid").val();
        var chat = $.connection.liuro;
         //觸發位置XY ,訊號種類,布林亂數,隨機顏色,兩個0~1亂數
-       chat.client.broadcast = function (_x, _y, signal, b, rndColor, r1, r2, words,callerID,userColor) {
+       chat.client.broadcast = function (_xRatio, _yRatio, signal, b, rndColor, r1, r2, words, callerID, userColor) {
                 var s = new createjs.Shape();
                 var W = stage.canvas.width;
                 var H = stage.canvas.height;
-              
+                var _x = W * _xRatio;
+                var _y = H * _yRatio;
                switch (signal) {
                         case 0: //固定位置淡出線
                             if (b)
@@ -166,11 +167,13 @@
      };
      var canvas = document.getElementById("canvas");
      $.connection.hub.start().done(function () {
+         var W = stage.canvas.width;
+         var H = stage.canvas.height;
              canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
              function getPosition(e) {
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
-                     chat.server.send(mouseX, mouseY);
+                     chat.server.send(mouseX/W, mouseY/H);
                      canvas.focus();
                  }
          });
