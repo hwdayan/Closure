@@ -170,13 +170,18 @@
            var canvas = document.getElementById("canvas");
                 var W = stage.canvas.width;
                 var H = stage.canvas.height;
-             canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
-             function getPosition(e) {
+                canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
+                canvas.addEventListener('touchstart', getPositionIpad, false); //for ipad
+                function getPosition(e) {
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
-                     chat.server.send(mouseX/W, mouseY/H);
-                     canvas.focus();
-                 }
+                     chat.server.send(mouseX/W, mouseY/H);   
+                }
+                function getPositionIpad(e) {
+                    mouseX = e.targetTouches[0].pageX;
+                    mouseY = e.targetTouches[0].pageY;
+                    chat.server.send(mouseX / W, mouseY / H);
+                }
          });
  
  });
