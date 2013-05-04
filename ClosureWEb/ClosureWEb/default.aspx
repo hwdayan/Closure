@@ -87,6 +87,7 @@
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
     <div id="tts"></div>
+    <audio src="\sound\beep.mp3" type="audio/mpeg" />
 
 
 </body>
