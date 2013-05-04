@@ -180,7 +180,8 @@ var ipadmuted = true;
                 }
                 function getPositionIpad(e) {
                     if (ipadmuted == true) {
-                        createjs.Sound.play("/sound/beep.mp3");
+                      var sound = createjs.Sound.play("/sound/beep.mp3");
+                        sound.setVolume(1);
                         ipadmuted = false;
                     }
                     mouseX = e.targetTouches[0].pageX;
