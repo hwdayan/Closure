@@ -64,8 +64,9 @@ var ipadmuted = true;
                                 function onComplete() {
                                           stage.removeChild(txt);
                                        }
-                                    var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                                    document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
+                                var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
+                                createjs.Sound.play("<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>");
+                                //    document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
                                     $("#count").val(words);
                                 }
             
@@ -186,13 +187,14 @@ var ipadmuted = true;
                         ipadmuted = false;
                     }
                     for (var i = 0; i < e.targetTouches.length; i++) {
-                        mouseX = e.targetTouches[i].pageX;
-                        mouseY = e.targetTouches[i].pageY;
-                        chat.server.send(mouseX / W, mouseY / H);
-                        if (i > 2) {
+                        if (e.targetTouches.length > 3) {
                             touchNoise();
                             break;
                         }
+                        mouseX = e.targetTouches[i].pageX;
+                        mouseY = e.targetTouches[i].pageY;
+                        chat.server.send(mouseX / W, mouseY / H);
+                        
                     }
                 }
           });
