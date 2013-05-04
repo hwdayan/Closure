@@ -197,9 +197,14 @@ var ipadmuted = true;
                         
                     }
                 }
-          });
+       });
+       var soundon = false;
        function touchNoise(e)
        {
+           if (!soundon) {
+               document.getElementById("soundon").play();
+               soundon = true;
+           }
            if (Math.random() < 0.3)
            {
                var lines = 15;
@@ -223,7 +228,6 @@ var ipadmuted = true;
                }
                soundplay(["static"], 1, Math.random());
            }
-           $("#count").val("x=" + e.targetTouches[0].pageX + ",y=" + e.targetTouches[0].pageY);
        }
  
  });
