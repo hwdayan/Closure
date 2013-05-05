@@ -94,7 +94,7 @@
     <img id="Img12" src="images/scale1.jpg" />
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
-    <div class="tts"></div>
+    <div id="tts" class="tts"></div>
   
 </body>
 </html>
