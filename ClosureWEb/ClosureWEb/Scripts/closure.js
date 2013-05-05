@@ -213,9 +213,9 @@ var W, H;
                 }
 
                 function touchNoise(e) {    
-                    if (push&&Math.random()<0.1)  //效能調整 參數高負荷較大
+                    if (push&&Math.random()<0.005)  //效能調整 參數高負荷較大
                     {          
-                        var xlines = Math.round(4+Math.random()*4);
+                        var xlines = Math.round(5+Math.random()*5);
                         var ylines = xlines;
                         var ctx = canvas.getContext("2d");
                         var gg =canvas;
