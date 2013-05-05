@@ -1,14 +1,15 @@
 ﻿var chars = ["a", "s", "d", "j", "%", "$", "#", "^", "￠", "*", "¶", "4", "2", "8", "", ".", "X", "Y", " ", " "];
+var W, H;
 
      $(function () {          
           var sid = $("#sid").val();
-       var chat = $.connection.liuro;
+          var chat = $.connection.liuro;
         //觸發位置XY ,訊號種類,布林亂數,隨機顏色,兩個0~1亂數
        chat.client.broadcast = function (_xRatio, _yRatio, signal, b, rndColor, r1, r2, words, callerID, userColor) {
 
                 var s = new createjs.Shape();
-                var W = stage.canvas.width;
-                var H = stage.canvas.height;
+                W = stage.canvas.width;
+                H = stage.canvas.height;
                 var _x = W * _xRatio;
                 var _y = H * _yRatio;
                switch (signal) {
@@ -50,7 +51,7 @@
                            s.graphics.f(rndColor).dp(_x, _y, 12, 3, 0.75, r1 * 360);
                             stage.addChild(s);
                            fadeOut(s, 1500);
-                           if (r2 < 1) {
+                           if (r2 < 0.25) {
                                     var txt = new createjs.Text(words, "15px Arial", rndColor);
                                   txt.setTransform(_x, _y + 10);
                                   stage.addChild(txt);
@@ -168,19 +169,30 @@
                      }
          }
      };
-       var beeped = 0;
+
        $.connection.hub.start().done(function () {
-           var canvas = document.getElementById("canvas");
-                var W = stage.canvas.width;
-                var H = stage.canvas.height;
-                canvas.addEventListener("click", getPosition, false);  //IE don't use mousedown
-                canvas.addEventListener('touchstart', getPositionIpad, false); //for ipad
-                canvas.addEventListener('touchmove', touchNoise, false); //for ipad
+
+                W = stage.canvas.width;
+                H = stage.canvas.height;
+                if (navigator.appName == 'Microsoft Internet Explorer')
+                    canvas.addEventListener("click", getPosition, false);
+                canvas.addEventListener("mousedown", getPosition, false);  //IE9 has problem
+                canvas.addEventListener("mousemove", touchNoise, false);  
+                canvas.addEventListener("mouseup", mouseup, false);
+          
+                var push = false; 
+                canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
+                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+
                 function getPosition(e) {
+                  
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
-                     chat.server.send(mouseX/W, mouseY/H);   
+                     chat.server.send(mouseX / W, mouseY / H);
+                     push = true;                 
                 }
+                var beeped = 0;
                 function getPositionIpad(e) {
                     if (beeped<15)//First sound must be invoke by user in ipad
                     {
@@ -195,40 +207,47 @@
                             break;
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
-                        chat.server.send(mouseX / W, mouseY / H);
-                
+                        chat.server.send(mouseX / W, mouseY / H);           
                     }
+                    push = true;
                 }
-       });
-     
-       function touchNoise(e)
-       {
-          
-           if (Math.random() < 0.3)
-           {
-               var lines = 15;
-               var ctx = canvas.getContext("2d");
-               var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
-               var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
-               var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
-               for (var i = 0; i < lines; i++) {
-                   for (var j = 0; j < 5; j++) {
-                       var sx, sy, sw, sh, x, y, w, h;
-                       sx = Math.random() * naturalWidth;
-                       sy = Math.random() * naturalHeight;
-                       sw = naturalWidth / lines;
-                       sh = naturalHeight / 5;
-                       x = i * W / lines;
-                       y = j * H / 5;
-                       w = W / lines;
-                       h = H / 5;
-                       ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+
+                function touchNoise(e) {    
+                    if (push&&Math.random()<0.13)  //效能調整 參數高負荷較大
+                    {          
+                        var xlines = Math.round(5+Math.random()*5);
+                        var ylines = xlines;
+                        var ctx = canvas.getContext("2d");
+                        var gg =canvas;
+                        var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
+                        var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
+                       for (var i = 0; i <xlines ; i++) {
+                       for (var j = 0; j <ylines; j++) {
+                        var sx, sy, sw, sh, x, y, w, h;
+                        sx = Math.random() * naturalWidth;
+                        sy = Math.random() * naturalHeight;
+                        sw = naturalWidth / xlines * Math.random();
+                        sh = naturalHeight / ylines * Math.random();
+                        x = i * W / xlines;
+                        y = j * H / ylines;
+                        w = W / xlines;
+                        h = H / ylines*Math.random();
+                        ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
                    }
-               }
-               soundplay(["static"], 1, Math.random());
-           }
-       }
- 
+                 }
+                 soundplay(["static"], 1, Math.random());       
+                }
+                }
+                
+                function mouseup(e) {
+                    push = false;
+                }
+                function touchEnd(e) {
+                    push = false;
+                }
+
+       });
+
  });
  function fadeOut(elem, time) {
          createjs.Tween.get(elem).wait(500).to({ alpha: 0, visible: false }, time).call(onComplete);
