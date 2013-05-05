@@ -190,16 +190,15 @@
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        if (muted)
-                        {
-                            for (var i = 1; i <= 15; i++)
-                            {
-                                var au = document.getElementById("audio" + i);
-                                au.onended = function () { au.src = ""; }
-                                au.onpause = function () { au.src = ""; }
-                                au.play();
-                            }
-                            muted = false;
+                        chat.client.sendSound = function (signal, r1, r2) {
+                            if(signal == 1)
+                                soundplay(["sonar"], callerID == sid ? 1 : 0.08);
+                            if(signal == 6)
+                                soundplay(["apollo","beep"], callerID == sid ? 1 : 0.08);
+                            if(signal == 5)
+                                soundplay(["beep"], 0.5);
+                            if(signal == 7)
+                                soundplay(["static", "beep"], 1, r1);
                         }
                     }
                 }

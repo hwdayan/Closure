@@ -90,21 +90,6 @@
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
     <div id="tts"></div>
-     <audio id="audio1" src="" controls="controls" />
-     <audio id="audio2" src="" controls="controls" />
-     <audio id="audio3" src="sound/beep.mp3" controls="controls" />
-     <audio id="audio4" src="" controls="controls" />
-     <audio id="audio5" src="" controls="controls" />
-     <audio id="audio6" src="sound/beep.mp3" controls="controls" />
-     <audio id="audio7" src="" controls="controls" />
-     <audio id="audio8" src="" controls="controls" />
-     <audio id="audio9" src="" controls="controls" />
-     <audio id="audio10" src="sound/beep.mp3" controls="controls" />
-     <audio id="audio11" src="" controls="controls" />
-     <audio id="audio12" src="" controls="controls" />
-     <audio id="audio13" src="" controls="controls" />
-     <audio id="audio14" src="" controls="controls" />
-     <audio id="audio15" src="sound/beep.mp3" controls="controls" />
 
 </body>
 </html>
