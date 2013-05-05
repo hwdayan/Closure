@@ -168,7 +168,7 @@
                      }
          }
      };
-       var muted = true;
+       var beeped = 0;
        $.connection.hub.start().done(function () {
            var canvas = document.getElementById("canvas");
                 var W = stage.canvas.width;
@@ -182,13 +182,13 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-                    if (muted)//First sound must be invoke by user in ipad
+                    if (beeped<15)//First sound must be invoke by user in ipad
                     {
                         createjs.Sound.setMute(false);
-                        var t = createjs.Sound.play("/sound/Sonar2.mp3");
+                        var t = createjs.Sound.play("/sound/beep.mp3");
                         t.mute(false);
                         t.setVolume(1);
-                        muted = false;
+                       beeped++;
                     }
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) {
