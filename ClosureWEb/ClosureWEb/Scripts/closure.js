@@ -194,9 +194,10 @@
                         {
                             for (var i = 1; i <= 15; i++)
                             {
-                                var au = $("#audio" + i);
+                                var au = document.getElementById("audio"+i);
                                 au.play();
                             }
+                            muted = false;
                         }
                     }
                 }
