@@ -181,7 +181,7 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-                    Sound.setMute() = false;
+                   createjs.Sound.setMute(false);
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) {
                             touchNoise();
