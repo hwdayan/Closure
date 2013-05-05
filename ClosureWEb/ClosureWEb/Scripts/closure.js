@@ -167,7 +167,7 @@
                      }
          }
      };
- 
+       var muted = true;
        $.connection.hub.start().done(function () {
            var canvas = document.getElementById("canvas");
                 var W = stage.canvas.width;
@@ -183,32 +183,21 @@
                 function getPositionIpad(e) {
         
                     for (var i = 0; i < e.targetTouches.length; i++) {
-                        if (e.targetTouches.length > 3) {
+                        if (e.targetTouches.length > 2) {
                             touchNoise();
                             break;
                         }
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        //var signal = chat.server.getSignal();
-                        //if (signal != -1)
-                        //{ 
-                        //    switch (signal) {
-                        //        case 1:
-                        //            soundplay(["sonar"], callerID == sid ? 1 : 0.08);
-                        //            break;                      
-                        //        case 5:
-                        //            soundplay(["beep"], 0.5);
-                        //            break;
-                        //        case 6:
-                        //            soundplay(["apollo", "beep"], callerID == sid ? 1 : 0.08);
-                        //            break;
-                        //        case 7:
-                        //            soundplay(["static"], 1, 0);
-                        //            break;
-                           
-                        //    }
-                        //}
+                        if (muted)
+                        {
+                            for (var i = 1; i <= 15; i++)
+                            {
+                                var au = $("#audio" + i);
+                                au.play();
+                            }
+                        }
                     }
                 }
        });
