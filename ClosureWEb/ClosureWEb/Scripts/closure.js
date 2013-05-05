@@ -182,10 +182,14 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-                    createjs.Sound.setMute(false);
-                    var t = createjs.Sound.play("/sound/beep2.mp3");
-                    t.mute(false);
-                    t.setVolume(1);
+                    if (muted)//First sound must be invoke by user in ipad
+                    {
+                        createjs.Sound.setMute(false);
+                        var t = createjs.Sound.play("/sound/Sonar2.mp3");
+                        t.mute(false);
+                        t.setVolume(1);
+                        muted = false;
+                    }
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) {
                             touchNoise();
