@@ -194,7 +194,9 @@
                         {
                             for (var i = 1; i <= 15; i++)
                             {
-                                var au = document.getElementById("audio"+i);
+                                var au = document.getElementById("audio" + i);
+                                au.onended = function () { au.src = ""; }
+                                au.onpause = function () { au.src = ""; }
                                 au.play();
                             }
                             muted = false;
