@@ -40,8 +40,12 @@
             $(window).resize(function () {
                 setsize()
             });
-            var title = new createjs.Text("Closure", "40px verdana", "#FFF");
-            stage.addChild(title);
+            var title = new createjs.Text("Closure", "34px verdana", "#0c8");
+            var title_ = new createjs.Text("Closure", "34px verdana", "#0cF");
+            title_.setTransform(3,3);
+            title.alpha = 0.24; title_.alpha = 0.18;
+            stage.addChild(title); stage.addChild(title_);
+           
         }
         function setsize()
         {
@@ -70,6 +74,7 @@
         CID:
 	        <input id="cid" type="text" runat="server" />
         <input id="count" type="text" />
+         
     </form>
     <img id="noise1" src="images/noise1.jpg" />
     <img id="noise2" src="images/noise2.jpg" />
@@ -89,7 +94,7 @@
     <img id="Img12" src="images/scale1.jpg" />
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
-    <div id="tts"></div>
-
+    <div class="tts"></div>
+  
 </body>
 </html>

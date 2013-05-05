@@ -50,7 +50,7 @@
                            s.graphics.f(rndColor).dp(_x, _y, 12, 3, 0.75, r1 * 360);
                             stage.addChild(s);
                            fadeOut(s, 1500);
-                           if (r2 < 0.25) {
+                           if (r2 < 1) {
                                     var txt = new createjs.Text(words, "15px Arial", rndColor);
                                   txt.setTransform(_x, _y + 10);
                                   stage.addChild(txt);
@@ -67,8 +67,9 @@
                                        }
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
                             document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                 
-                                    $("#count").val(words);
-                                }
+                            //        $("#count").val(words);
+                                    
+                           }
             
                             break;
                         case 4:  //移動淡出線
@@ -181,7 +182,10 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-                   createjs.Sound.setMute(false);
+                    createjs.Sound.setMute(false);
+                    var t = createjs.Sound.play("/sound/beep2.mp3");
+                    t.mute(false);
+                    t.setVolume(1);
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) {
                             touchNoise();
