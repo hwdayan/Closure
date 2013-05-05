@@ -191,23 +191,12 @@
                        beeped++;
                     }
                     for (var i = 0; i < e.targetTouches.length; i++) {
-                        if (e.targetTouches.length > 2) {
-                            touchNoise();
+                        if (e.targetTouches.length > 2) 
                             break;
-                        }
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        //chat.client.sendSound = function (signal, r1, r2) {
-                        //    if(signal == 1)
-                        //        soundplay(["sonar"], callerID == sid ? 1 : 0.08);
-                        //    if(signal == 6)
-                        //        soundplay(["apollo","beep"], callerID == sid ? 1 : 0.08);
-                        //    if(signal == 5)
-                        //        soundplay(["beep"], 0.5);
-                        //    if(signal == 7)
-                        //        soundplay(["static", "beep"], 1, r1);
-                        //}
+                
                     }
                 }
        });
@@ -215,29 +204,29 @@
        function touchNoise(e)
        {
           
-           //if (Math.random() < 0.3)
-           //{
-           //    var lines = 15;
-           //    var ctx = canvas.getContext("2d");
-           //    var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
-           //    var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
-           //    var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
-           //    for (var i = 0; i < lines; i++) {
-           //        for (var j = 0; j < 5; j++) {
-           //            var sx, sy, sw, sh, x, y, w, h;
-           //            sx = Math.random() * naturalWidth;
-           //            sy = Math.random() * naturalHeight;
-           //            sw = naturalWidth / lines;
-           //            sh = naturalHeight / 5;
-           //            x = i * W / lines;
-           //            y = j * H / 5;
-           //            w = W / lines;
-           //            h = H / 5;
-           //            ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-           //        }
-           //    }
-           //    soundplay(["static"], 1, Math.random());
-           //}
+           if (Math.random() < 0.3)
+           {
+               var lines = 15;
+               var ctx = canvas.getContext("2d");
+               var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
+               var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
+               var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
+               for (var i = 0; i < lines; i++) {
+                   for (var j = 0; j < 5; j++) {
+                       var sx, sy, sw, sh, x, y, w, h;
+                       sx = Math.random() * naturalWidth;
+                       sy = Math.random() * naturalHeight;
+                       sw = naturalWidth / lines;
+                       sh = naturalHeight / 5;
+                       x = i * W / lines;
+                       y = j * H / 5;
+                       w = W / lines;
+                       h = H / 5;
+                       ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+                   }
+               }
+               soundplay(["static"], 1, Math.random());
+           }
        }
  
  });
