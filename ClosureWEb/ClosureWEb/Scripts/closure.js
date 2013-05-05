@@ -190,25 +190,25 @@
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        var signal = chat.server.getSignal();
-                        if (signal != -1)
-                        { 
-                            switch (signal) {
-                                case 1:
-                                    soundplay(["sonar"], callerID == sid ? 1 : 0.08);
-                                    break;                      
-                                case 5:
-                                    soundplay(["beep"], 0.5);
-                                    break;
-                                case 6:
-                                    soundplay(["apollo", "beep"], callerID == sid ? 1 : 0.08);
-                                    break;
-                                case 7:
-                                    soundplay(["static"], 1, 0);
-                                    break;
+                        //var signal = chat.server.getSignal();
+                        //if (signal != -1)
+                        //{ 
+                        //    switch (signal) {
+                        //        case 1:
+                        //            soundplay(["sonar"], callerID == sid ? 1 : 0.08);
+                        //            break;                      
+                        //        case 5:
+                        //            soundplay(["beep"], 0.5);
+                        //            break;
+                        //        case 6:
+                        //            soundplay(["apollo", "beep"], callerID == sid ? 1 : 0.08);
+                        //            break;
+                        //        case 7:
+                        //            soundplay(["static"], 1, 0);
+                        //            break;
                            
-                            }
-                        }
+                        //    }
+                        //}
                     }
                 }
        });
@@ -216,28 +216,28 @@
        function touchNoise(e)
        {
           
-           if (Math.random() < 0.3)
-           {
-               var lines = 15;
-               var ctx = canvas.getContext("2d");
-               var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
-               var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
-               var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
-               for (var i = 0; i < lines; i++) {
-                   for (var j = 0; j < 5; j++) {
-                       var sx, sy, sw, sh, x, y, w, h;
-                       sx = Math.random() * naturalWidth;
-                       sy = Math.random() * naturalHeight;
-                       sw = naturalWidth / lines;
-                       sh = naturalHeight / 5;
-                       x = i * W / lines;
-                       y = j * H / 5;
-                       w = W / lines;
-                       h = H / 5;
-                       ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-                   }
-               }
-               soundplay(["static"], 1, Math.random());
+           //if (Math.random() < 0.3)
+           //{
+           //    var lines = 15;
+           //    var ctx = canvas.getContext("2d");
+           //    var gg = document.getElementById("noise" + Math.round(Math.random() * 2)+1);
+           //    var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
+           //    var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
+           //    for (var i = 0; i < lines; i++) {
+           //        for (var j = 0; j < 5; j++) {
+           //            var sx, sy, sw, sh, x, y, w, h;
+           //            sx = Math.random() * naturalWidth;
+           //            sy = Math.random() * naturalHeight;
+           //            sw = naturalWidth / lines;
+           //            sh = naturalHeight / 5;
+           //            x = i * W / lines;
+           //            y = j * H / 5;
+           //            w = W / lines;
+           //            h = H / 5;
+           //            ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+           //        }
+           //    }
+           //    soundplay(["static"], 1, Math.random());
            }
        }
  
