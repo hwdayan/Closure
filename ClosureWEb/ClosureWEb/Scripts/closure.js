@@ -181,7 +181,7 @@
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-        
+                    Sound.setMute() = false;
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) {
                             touchNoise();
@@ -190,16 +190,16 @@
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        chat.client.sendSound = function (signal, r1, r2) {
-                            if(signal == 1)
-                                soundplay(["sonar"], callerID == sid ? 1 : 0.08);
-                            if(signal == 6)
-                                soundplay(["apollo","beep"], callerID == sid ? 1 : 0.08);
-                            if(signal == 5)
-                                soundplay(["beep"], 0.5);
-                            if(signal == 7)
-                                soundplay(["static", "beep"], 1, r1);
-                        }
+                        //chat.client.sendSound = function (signal, r1, r2) {
+                        //    if(signal == 1)
+                        //        soundplay(["sonar"], callerID == sid ? 1 : 0.08);
+                        //    if(signal == 6)
+                        //        soundplay(["apollo","beep"], callerID == sid ? 1 : 0.08);
+                        //    if(signal == 5)
+                        //        soundplay(["beep"], 0.5);
+                        //    if(signal == 7)
+                        //        soundplay(["static", "beep"], 1, r1);
+                        //}
                     }
                 }
        });
