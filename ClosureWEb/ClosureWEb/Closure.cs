@@ -15,7 +15,7 @@
 	        public static Dictionary<string, Boolean[,]> pushs = new Dictionary<string, Boolean[,]>();
 	        public static Dictionary<string, List<string>> SIDmapping = new Dictionary<string, List<string>>();
 	        public string cid,sid;
-	
+	        public  int signal =  -1;
 	        public void Send(double mouseX,double mouseY)
 	        { 
 	            cid = getCID();
@@ -26,8 +26,7 @@
 	            RNGCryptoServiceProvider rngc = new RNGCryptoServiceProvider();
               
 	            byte[] bta = new byte[1];
-                rngc.GetBytes(bta);
-                int signal =  0;
+                rngc.GetBytes(bta);         
 	            int _signal = bta[0] % 25; //0~24
                 if (_signal < 5)   //5/25垂直或水平座標線
                     signal = 0;
@@ -88,10 +87,8 @@
 	            }
 	            return result.ToArray();
 	        }
-	        public void removeUser(string sid)
-	        {
-	            Closure.SIDmapping.Remove(sid);
-	        }
+	        public int getSignal()
+            { return signal; }
 	        private string getSID()
 	        {
 	            // Get the HttpContext from the SignalR request

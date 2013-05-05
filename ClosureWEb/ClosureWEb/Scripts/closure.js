@@ -1,5 +1,5 @@
 ﻿var chars = ["a", "s", "d", "j", "%", "$", "#", "^", "￠", "*", "¶", "4", "2", "8", "", ".", "X", "Y", " ", " "];
-var ipadmuted = true;
+
      $(function () {          
           var sid = $("#sid").val();
        var chat = $.connection.liuro;
@@ -181,11 +181,7 @@ var ipadmuted = true;
                      chat.server.send(mouseX/W, mouseY/H);   
                 }
                 function getPositionIpad(e) {
-                    if (ipadmuted == true) {
-                      var sound = createjs.Sound.play("/sound/beep.mp3");
-                        sound.setVolume(1);
-                        ipadmuted = false;
-                    }
+        
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 3) {
                             touchNoise();
@@ -194,17 +190,32 @@ var ipadmuted = true;
                         mouseX = e.targetTouches[i].pageX;
                         mouseY = e.targetTouches[i].pageY;
                         chat.server.send(mouseX / W, mouseY / H);
-                        
+                        var signal = chat.server.getSignal();
+                        if (signal != -1)
+                        { 
+                            switch (signal) {
+                                case 1:
+                                    soundplay(["sonar"], callerID == sid ? 1 : 0.08);
+                                    break;                      
+                                case 5:
+                                    soundplay(["beep"], 0.5);
+                                    break;
+                                case 6:
+                                    soundplay(["apollo", "beep"], callerID == sid ? 1 : 0.08);
+                                    break;
+                                case 7:
+                                    soundplay(["static"], 1, 0);
+                                    break;
+                           
+                            }
+                        }
                     }
                 }
        });
-       var soundon = false;
+     
        function touchNoise(e)
        {
-           if (!soundon) {
-               document.getElementById("soundon").play();
-               soundon = true;
-           }
+          
            if (Math.random() < 0.3)
            {
                var lines = 15;
