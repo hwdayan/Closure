@@ -211,9 +211,9 @@ var W, H;
                     }
                     push = true;
                 }
-
+               var  fire = 0.3
                 function touchNoise(e) {    
-                    if (push&&Math.random()<0.02)  //效能調整 參數高負荷較大
+                    if (push&&Math.random()<fire)  //效能調整 參數高負荷較大
                     {          
                         var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
@@ -233,6 +233,10 @@ var W, H;
                         w = W / xlines*Math.random() ;
                         h = H / ylines*Math.random() ;
                         ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+                        if (Math.random() < 0.001) {
+                            fire = 0;
+                            setTimeout(function () { fire = 0.3 }, 8000);
+                        }
                    }
                  }
                  soundplay(["static"], 1, Math.random());       
