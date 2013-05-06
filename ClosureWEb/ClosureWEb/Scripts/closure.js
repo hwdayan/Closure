@@ -180,20 +180,29 @@ var W, H;
                 canvas.addEventListener("mousemove", touchNoise, false);  
                 canvas.addEventListener("mouseup", mouseup, false);
           
-                var push = false; 
+                var push = false;
+               
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
                 canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
                 canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
-
+                var restime;
+                var restbound;
+                var fire;
                 function getPosition(e) {
-                  
+                    restbound = 0;
+                    restime = -1;
+                    fire =true;
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
                      chat.server.send(mouseX / W, mouseY / H);
                      push = true;                 
                 }
                 var beeped = 0;
+
                 function getPositionIpad(e) {
+                    restbound = 0.5;
+                    restime = 10000;
+                    fire = true;
                     if (beeped<15)//First sound must be invoke by user in ipad
                     {
                         createjs.Sound.setMute(false);
@@ -211,9 +220,9 @@ var W, H;
                     }
                     push = true;
                 }
-               var  fire = 0.2
+           
                 function touchNoise(e) {    
-                    if (push&&Math.random()<fire)  //效能調整 參數高負荷較大
+                    if (push&&fire)  //效能調整 參數高負荷較大
                     {          
                         var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
@@ -233,9 +242,9 @@ var W, H;
                         w = W / xlines*Math.random() ;
                         h = H / ylines*Math.random() ;
                         ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-                        if (Math.random() < 0.01) {
-                            fire = 0;
-                            setTimeout(function () { fire = 0.2 }, 10000);
+                        if (Math.random() <restbound) {
+                            fire = false;
+                            setTimeout(function () { fire = true }, restime);
                         }
                    }
                  }
