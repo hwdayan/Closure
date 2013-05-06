@@ -211,7 +211,7 @@ var W, H;
                     }
                     push = true;
                 }
-               var  fire = 0.3
+               var  fire = 0.2
                 function touchNoise(e) {    
                     if (push&&Math.random()<fire)  //效能調整 參數高負荷較大
                     {          
@@ -233,9 +233,9 @@ var W, H;
                         w = W / xlines*Math.random() ;
                         h = H / ylines*Math.random() ;
                         ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-                        if (Math.random() < 0.001) {
+                        if (Math.random() < 0.01) {
                             fire = 0;
-                            setTimeout(function () { fire = 0.3 }, 8000);
+                            setTimeout(function () { fire = 0.2 }, 10000);
                         }
                    }
                  }
