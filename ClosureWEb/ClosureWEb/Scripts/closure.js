@@ -177,8 +177,8 @@ var W, H;
                 if (navigator.appName == 'Microsoft Internet Explorer')
                     canvas.addEventListener("click", getPosition, false);
                 canvas.addEventListener("mousedown", getPosition, false);  //IE9 has problem
-                canvas.addEventListener("mousemove", touchNoise, false);  
-                canvas.addEventListener("mouseup", mouseup, false);
+                //canvas.addEventListener("mousemove", touchNoise, false);  
+                //canvas.addEventListener("mouseup", mouseup, false);
           
                 var push = false;
                
