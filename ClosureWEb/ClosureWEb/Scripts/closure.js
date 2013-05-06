@@ -183,14 +183,14 @@ var W, H;
                 var push = false;
                
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
-                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
-                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+                //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
                 var restime;
                 var restbound;
                 var fire;
                 function getPosition(e) {
-                    restbound = 0;
-                    restime = -1;
+                    restbound = 0.03;
+                    restime = 6500;
                     fire =true;
                      mouseX = e.x  - canvas.offsetLeft;
                      mouseY = e.y  - canvas.offsetTop;
