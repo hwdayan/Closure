@@ -213,9 +213,9 @@ var W, H;
                 }
 
                 function touchNoise(e) {    
-                    if (push&&Math.random()<0.005)  //效能調整 參數高負荷較大
+                    if (push&&Math.random()<0.15)  //效能調整 參數高負荷較大
                     {          
-                        var xlines = Math.round(5+Math.random()*5);
+                        var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
                         var ctx = canvas.getContext("2d");
                         var gg =canvas;
@@ -226,12 +226,12 @@ var W, H;
                         var sx, sy, sw, sh, x, y, w, h;
                         sx = Math.random() * naturalWidth;
                         sy = Math.random() * naturalHeight;
-                        sw = naturalWidth / xlines * Math.random();
-                        sh = naturalHeight / ylines * Math.random();
+                        sw = naturalWidth / xlines ;
+                        sh = naturalHeight / ylines ;
                         x = i * W / xlines;
                         y = j * H / ylines;
                         w = W / xlines;
-                        h = H / ylines*Math.random();
+                        h = H / ylines;
                         ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
                    }
                  }
