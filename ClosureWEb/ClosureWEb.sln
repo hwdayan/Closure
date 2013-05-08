@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosureWEb", "ClosureWEb\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRcode", "QRcode\QRcode.csproj", "{49FEFF17-6187-40F7-B586-9622FD05A193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSCpanel", "OSCpanel\OSCpanel.csproj", "{8D7A6906-80A5-42A8-95DA-B26B332D427F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,10 +19,6 @@ Global
 		{49FEFF17-6187-40F7-B586-9622FD05A193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49FEFF17-6187-40F7-B586-9622FD05A193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49FEFF17-6187-40F7-B586-9622FD05A193}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D7A6906-80A5-42A8-95DA-B26B332D427F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D7A6906-80A5-42A8-95DA-B26B332D427F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D7A6906-80A5-42A8-95DA-B26B332D427F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D7A6906-80A5-42A8-95DA-B26B332D427F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
