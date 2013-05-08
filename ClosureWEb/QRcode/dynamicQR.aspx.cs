@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Gma.QrCodeNet.Encoding;
-using System.Text;
+using ThoughtWorks.QRCode.Codec;
 
 
 namespace QRcode
@@ -14,38 +11,30 @@ namespace QRcode
     {
         public static string validCode;
         Random r = new Random(DateTime.Now.Millisecond);
-        QrEncoder encoder = new QrEncoder();
+        QRCodeEncoder encoder = new QRCodeEncoder
+        {
+            QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE,
+            QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M,
+            QRCodeVersion = 7,
+            QRCodeScale = 50
+        };
 
         protected void Page_Load(object sender, EventArgs e)
         { 
-            Timer1.Tick += timer_Tick;
+            Timer1.Tick += timer_Tick;   
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
-
-            string s = "";
-            string bits ="";
-            string domain = "http://closure2.apphb.com?q=";
+          
+            validCode = "";
+            string domain = "http://localhost:56025/QRHandler1.ashx?";
             for (int i = 0; i < 6; i++)
             {
-               s +=  r.Next(100)>50?r.Next(10).ToString():((char)(97 + r.Next(26))).ToString();
+              validCode += r.Next(100) > 50 ? r.Next(10).ToString() : ((char)(97 + r.Next(26))).ToString();
             }
-            validCode = s;
-            QrCode qr = encoder.Encode(domain+validCode);
-            BitMatrix bm = qr.Matrix;
-            for (int i = 0; i < bm.Width; i++)
-            {
-               
-                for (int j = 0; j < bm.Height; j++)
-                {
-                   bits += bm.InternalArray[i, j] ? "1" : "0";
-                }
-            }
-            codes.Value = bits;
-            QRwidth.Value = bm.Width.ToString();
-            QRheight.Value = bm.Height.ToString();
-            Timer1.Interval = 600000;
+            Image1.ImageUrl = domain + validCode;
+         Timer1.Interval = 3000;
         }
     }
 }
