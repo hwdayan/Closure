@@ -10,15 +10,15 @@
 <body>
     <form id="form1" runat="server">
         <div>
-    <%--        <canvas id="QRcanvas" runat="server" width="1000" height="1000"></canvas>
+            <canvas id="QRcanvas" runat="server" width="1000" height="1000"></canvas>
             <input id="codes" type="hidden" runat="server" />
+            <input id="validnum" type="hidden" runat="server" />
             <input id="QRwidth" type="hidden" runat="server" />
-            <input id="QRheight" type="hidden" runat="server" />--%>
+            <input id="QRheight" type="hidden" runat="server" />
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer>
-            <asp:Image ID="Image1" runat="server" />
         </div>
- <%--   <script>
+    <script>
         var w = parseInt(document.getElementById('QRwidth').value);
         var h = parseInt(document.getElementById('QRheight').value);
         var qr = document.getElementById('codes').value;
@@ -34,7 +34,7 @@
         }
 
     </script>
- --%>
+ 
         
     </form>
      

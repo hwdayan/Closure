@@ -5,11 +5,9 @@
  using System.Web.UI.WebControls;
  using System.Drawing;
  using System.Web.SessionState;
- //using System.Web.Routing;
- using Microsoft.AspNet.SignalR;
- using Microsoft.AspNet.SignalR.Hubs;
  using System.IO;
  using System.Collections.Generic;
+ using QRcode;
  namespace Closure
 {
     public partial class _default : System.Web.UI.Page
@@ -17,6 +15,11 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString.Count == 0 || Request.QueryString[0] != dynamicQR.validCode)
+            {
+                Response.Write("有關記憶截流。。。建構中");
+                Response.End();
+            }
            if (Global.dictionary.Count == 0)
             {
                 FileStream fs = new FileStream(Server.MapPath("Dictionary.txt"), FileMode.Open);
@@ -29,23 +32,7 @@
                 //Response.Write("全域字典加入");
             }
              sid.Value = Context.Session.SessionID;
-            ////tag.Value= sid;
-            //if (!Closure.pushs.ContainsKey(sid))
-           //    Closure.pushs.Add(sid, new Boolean[5, 5]); //新用戶
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    for (int j = 0; j < 5; j++)
-            //    {
-            //        Panel div = new Panel();
-            //        Button b = new Button();
-            //        b.ID = i.ToString() + j.ToString();
-            //        b.Text = Closure.pushs[sid][i, j] == true ? "true" : "false";
-            //        b.Attributes.Add("onclick", "return false"); //不要postback
-            //        div.Controls.Add(b);
-            //        form1.Controls.Add(div);
-            //        b.CssClass = "push";
-            //    }
-            //}
+      
        }
   
     
