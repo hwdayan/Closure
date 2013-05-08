@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>QRCodeHelper</id>
+    <version>1.0.4</version>
+    <title>QRCode Helper</title>
+    <authors>J.Sakamoto</authors>
+    <owners>J.Sakamoto</owners>
+    <licenseUrl>http://www.codeproject.com/info/cpol10.aspx</licenseUrl>
+    <projectUrl>http://qrcodehelper.codeplex.com/</projectUrl>
+    <iconUrl>http://download.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=qrcodehelper&amp;DownloadId=198901&amp;Build=17501</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This helper for WebMatrix and ASP.NET Web Pages allows you to easily display QR Code on your site.
+      あなたのASP.NETページにQRコードを容易に表示することのできる、WebMatrix および ASP.NET Web Pages 用のヘルパーです。</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>QR QRCode WebMatrix aspnetwebpages</tags>
+  </metadata>
+</package>
