@@ -12,15 +12,13 @@
 	    [HubName("liuro")]
 	    public class Closure : Hub
 	    {
-	        public static Dictionary<string, Boolean[,]> pushs = new Dictionary<string, Boolean[,]>();
-	        public static Dictionary<string, List<string>> SIDmapping = new Dictionary<string, List<string>>();
+
 	        public string cid,sid;
 	        public  int signal =  -1;
 	        public void Send(double mouseX,double mouseY)
 	        { 
 	            cid = getCID();
 	            sid = getSID();
-	            var dic = Closure.SIDmapping;
 	            var callerID = sid;
 	            Random rnd = new Random(DateTime.Now.Millisecond);
 	            RNGCryptoServiceProvider rngc = new RNGCryptoServiceProvider();
@@ -70,25 +68,14 @@
 	            }
                 if (signal == 7)
                     Clients.Caller.broadcast(mouseX, mouseY, signal, b, rndColor, r1, r2, words, callerID, userColor);
-     
-                else
-                    Clients.All.broadcast(mouseX, mouseY, signal, b, rndColor, r1, r2, words, callerID, userColor);
+
+                else {
+                Clients.All.broadcast(mouseX, mouseY, signal, b, rndColor, r1, r2, words, callerID, userColor);
+                Clients.All.osc(new object[] { mouseX, mouseY, signal, b, rndColor, r1, r2, words, callerID, userColor });   
+                }
 
 	        }
-	        private string[] exclude()
-	        {
-	            var dic = Closure.SIDmapping; 
-	            List<string> result = new List<string>();
-	            foreach (KeyValuePair<string,List<string>> kv in dic)
-	            {
-	               if(kv.Key!=sid)
-	               {
-	                   foreach (string s in dic[kv.Key])
-	                       result.Add(s);
-	               }
-	            }
-	            return result.ToArray();
-	        }
+	      
 	        public int getSignal()
             { return signal; }
 	        private string getSID()
