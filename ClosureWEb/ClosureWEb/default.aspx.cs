@@ -15,11 +15,11 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString.Count == 0 || Request.QueryString[0] != dynamicQR.validCode)
-            {
-                Response.Write("有關記憶截流。。。建構中");
-                Response.End();
-            }
+            //if (Request.QueryString.Count == 0 || Request.QueryString[0] != dynamicQR.validCode)
+            //{
+            //    Response.Write("有關記憶截流。。。建構中");
+            //    Response.End();
+            //}
            if (Global.dictionary.Count == 0)
             {
                 FileStream fs = new FileStream(Server.MapPath("Dictionary.txt"), FileMode.Open);
