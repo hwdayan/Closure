@@ -38,10 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClosureWEb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>obj\Debug\ClosureWEb.dll</HintPath>
-    </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, PublicKeyToken=e8a75d24b142be49, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Gma.QrCodeNet.Encoder\Gma.QrCodeNet.Encoding.dll</HintPath>
@@ -92,21 +88,21 @@
     <Content Include="dictionary.txt" />
     <Content Include="dynamicQR.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="images\0-31.jpg" />
-    <Content Include="images\google3.jpg" />
-    <Content Include="images\holiday-drone1.jpg" />
-    <Content Include="images\130319-hawthorne-army-depot-9a.jpg" />
-    <Content Include="images\20090207tomcatsoceana.jpg" />
-    <Content Include="images\20090619baercs.jpg" />
-    <Content Include="images\base1.jpg" />
-    <Content Include="images\google2.jpg" />
-    <Content Include="images\google1.jpg" />
-    <Content Include="images\halifaxcitadel.jpg" />
-    <Content Include="images\DalienNavalShipyards.jpg" />
-    <Content Include="images\planes-big_1583925a.jpg" />
-    <Content Include="images\scale1.jpg" />
-    <Content Include="images\starthm4.jpg" />
-    <Content Include="images\UFO.jpg" />
+    <Content Include="images\img0.jpg" />
+    <Content Include="images\img1.jpg" />
+    <Content Include="images\img10.jpg" />
+    <Content Include="images\img11.jpg" />
+    <Content Include="images\img12.jpg" />
+    <Content Include="images\img13.jpg" />
+    <Content Include="images\img14.jpg" />
+    <Content Include="images\img2.jpg" />
+    <Content Include="images\img3.jpg" />
+    <Content Include="images\img4.jpg" />
+    <Content Include="images\img5.jpg" />
+    <Content Include="images\img6.jpg" />
+    <Content Include="images\img7.jpg" />
+    <Content Include="images\img8.jpg" />
+    <Content Include="images\img9.jpg" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\closure-sound.js" />
