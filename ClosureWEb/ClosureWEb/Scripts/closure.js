@@ -27,8 +27,8 @@ var W, H;
                            var c = new lib.circle2();
                           txt.setTransform(_x-15 , _y-30);
                            c.setTransform(_x - 70, _y - 70);
-                            c.scaleX = 1 + r1 * 0.5;
-                           c.scaleY = 1 + r1 * 0.5;
+                            c.scaleX = (1 + r1 * 0.5)*(W/1920);
+                            c.scaleY = c.scaleX;
                            stage.addChild(c);
                            stage.addChild(txt);
                            fadeOut(c, 1500);
@@ -51,7 +51,7 @@ var W, H;
                            s.graphics.f(rndColor).dp(_x, _y, 12, 3, 0.75, r1 * 360);
                             stage.addChild(s);
                            fadeOut(s, 1500);
-                           if (r2 < 0.25) {
+                           if (r2 <0.25) {
                                     var txt = new createjs.Text(words, "15px Arial", rndColor);
                                   txt.setTransform(_x, _y + 10);
                                   stage.addChild(txt);
@@ -65,9 +65,12 @@ var W, H;
                                     txtTween.wait(500).to({ alpha: 0, visible: false }, 1500).call(onComplete);
                                 function onComplete() {
                                           stage.removeChild(txt);
-                                       }
+                                }        
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                            document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                 
+                                  document.getElementById("tts").innerHTML = "<audio autoplay hidden>"
+                                                                   +" <source src='"+url+"'type='audio/mpeg'></audio>";
+
+   
                             //        $("#count").val(words);
                                     
                            }
@@ -177,17 +180,15 @@ var W, H;
                 if (navigator.appName == 'Microsoft Internet Explorer')
                     canvas.addEventListener("click", getPosition, false);
                 canvas.addEventListener("mousedown", getPosition, false);  //IE9 has problem
-                //canvas.addEventListener("mousemove", touchNoise, false);  
-                //canvas.addEventListener("mouseup", mouseup, false);
+                canvas.addEventListener("mousemove", touchNoise, false);  
+                canvas.addEventListener("mouseup", mouseup, false);
           
                 var push = false;
                
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
-                //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
-                //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
-                var restime;
-                var restbound;
-                var fire;
+                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+
                 function getPosition(e) {
                     restbound = 0.03;
                     restime = 6500;
@@ -222,7 +223,7 @@ var W, H;
                 }
            
                 function touchNoise(e) {    
-                    if (push&&fire)  //效能調整 參數高負荷較大
+                    if (push)  //效能調整 參數高負荷較大
                     {          
                         var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
@@ -230,26 +231,22 @@ var W, H;
                         var gg =canvas;
                         var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
                         var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
-                       for (var i = 0; i <xlines ; i++) {
-                       for (var j = 0; j <ylines; j++) {
-                        var sx, sy, sw, sh, x, y, w, h;
-                        sx = Math.random() * naturalWidth;
-                        sy = Math.random() * naturalHeight;
-                        sw = naturalWidth / xlines * Math.random();
-                        sh = naturalHeight / ylines* Math.random() ;
-                        x = i * W / xlines;
-                        y = j * H / ylines;
-                        w = W / xlines*Math.random() ;
-                        h = H / ylines*Math.random() ;
-                        ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-                        if (Math.random() <restbound) {
-                            fire = false;
-                            setTimeout(function () { fire = true }, restime);
+                        for (var i = 0; i < xlines ; i++) {
+                            for (var j = 0; j < ylines; j++) {
+                                if (Math.random() > 0.875) {
+                                    var sx, sy, sw, sh, x, y, w, h;
+                                    sx = Math.random() * naturalWidth;
+                                    sy = Math.random() * naturalHeight;
+                                    sw = naturalWidth / xlines * Math.random();
+                                    sh = naturalHeight / ylines * Math.random();
+                                    x = i * W / xlines;
+                                    y = j * H / ylines;
+                                    w = W / xlines * Math.random();
+                                    h = H / ylines * Math.random();
+                                    ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
+                                }  } }
+                            soundplay(["static"], 1, Math.random());       
                         }
-                   }
-                 }
-                 soundplay(["static"], 1, Math.random());       
-                }
                 }
                 
                 function mouseup(e) {
