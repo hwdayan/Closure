@@ -103,10 +103,12 @@
     <Content Include="images\img7.jpg" />
     <Content Include="images\img8.jpg" />
     <Content Include="images\img9.jpg" />
+    <Content Include="images\noise.jpg" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\closure-sound.js" />
     <Content Include="Scripts\closure.js" />
+    <Content Include="Scripts\loading.js" />
     <Content Include="Scripts\testHTML.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />

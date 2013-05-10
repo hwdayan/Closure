@@ -9,6 +9,7 @@
     <%--   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />--%>
     <link href="closure.css" rel="stylesheet" />
     <title>Closure</title>
+    <script src="Scripts/loading.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <%--    <script src="Scripts/jquery-1.6.4.js"></script>--%>
     <script src="Scripts/jquery.signalR-1.0.1.js"></script>
@@ -74,7 +75,7 @@
                 canvas.width = $(window).innerWidth();
                 canvas.height = $(window).innerHeight();
             }
-
+            stoploading();
 
         }
     </script>
@@ -82,7 +83,7 @@
 </head>
 <body onload="init();" style="margin: 0">
   
-    <canvas id="canvas" width="100%" height="100%"> </canvas>
+    <canvas id="canvas" width="3000" height="2000"> </canvas>
 
     <form id="form1" runat="server">
         SID:
@@ -92,6 +93,7 @@
         <input id="count" type="text" />
 
     </form>
+     <img id="noise" src="images/noise.jpg" />
     <img id="Img0" src="images/img0.jpg" />
     <img id="Img1" src="images/img1.jpg" />
     <img id="Img2" src="images/img2.jpg" />
