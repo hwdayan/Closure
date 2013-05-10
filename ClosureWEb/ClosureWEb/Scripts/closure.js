@@ -67,8 +67,7 @@ var W, H;
                                           stage.removeChild(txt);
                                 }        
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                                  document.getElementById("tts").innerHTML = "<audio autoplay hidden>"
-                                                                   +" <source src='"+url+"'type='audio/mpeg'></audio>";
+                                document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
 
    
                             //        $("#count").val(words);
@@ -169,7 +168,7 @@ var W, H;
                                      }
                              }
                         soundplay(["static","beep"], 1,r1);
-                     }
+                 }
          }
      };
 
@@ -223,7 +222,7 @@ var W, H;
                 }
            
                 function touchNoise(e) {    
-                    if (push)  //效能調整 參數高負荷較大
+                    if (push&&e.x%10==0)  //效能調整 參數高負荷較大
                     {          
                         var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
@@ -232,8 +231,7 @@ var W, H;
                         var naturalWidth = gg.width == 0 ? gg.naturalWidth : gg.width;
                         var naturalHeight = gg.height == 0 ? gg.naturalHeight : gg.height;
                         for (var i = 0; i < xlines ; i++) {
-                            for (var j = 0; j < ylines; j++) {
-                                if (Math.random() > 0.875) {
+                            for (var j = 0; j < ylines; j++) {         
                                     var sx, sy, sw, sh, x, y, w, h;
                                     sx = Math.random() * naturalWidth;
                                     sy = Math.random() * naturalHeight;
@@ -244,9 +242,10 @@ var W, H;
                                     w = W / xlines * Math.random();
                                     h = H / ylines * Math.random();
                                     ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
-                                }  } }
+                                 } }
                             soundplay(["static"], 1, Math.random());       
-                        }
+                      
+                    }
                 }
                 
                 function mouseup(e) {

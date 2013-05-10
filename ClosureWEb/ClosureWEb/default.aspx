@@ -82,7 +82,7 @@
 </head>
 <body onload="init();" style="margin: 0">
   
-    <canvas id="canvas"> </canvas>
+    <canvas id="canvas" width="100%" height="100%"> </canvas>
 
     <form id="form1" runat="server">
         SID:
@@ -108,6 +108,5 @@
     <img id="Img13" src="images/starthm4.jpg" />
     <img id="Img14" src="images/UFO.jpg" />
     <div id="tts" class="tts"></div>
-
 </body>
 </html>
