@@ -183,8 +183,8 @@ var W, H;
                 canvas.addEventListener("mouseup", mouseup, false);         
                 var push = false;             
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
-                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
-                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+                //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
 
                 function getPosition(e) {
                     restbound = 0.03;
