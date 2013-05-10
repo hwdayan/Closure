@@ -92,21 +92,21 @@
         <input id="count" type="text" />
 
     </form>
-    <img id="Img0" src="images/0-31.jpg" />
-    <img id="Img1" src="images/holiday-drone1.jpg" />
-    <img id="Img2" src="images/130319-hawthorne-army-depot-9a.jpg" />
-    <img id="Img3" src="images/20090207tomcatsoceana.jpg" />
-    <img id="Img4" src="images/20090619baercs.jpg" />
-    <img id="Img5" src="images/base1.jpg" />
-    <img id="Img6" src="images/google2.jpg" />
-    <img id="Img7" src="images/google3.jpg" />
-    <img id="Img8" src="images/google1.jpg" />
-    <img id="Img9" src="images/halifaxcitadel.jpg" />
-    <img id="Img10" src="images/DalienNavalShipyards.jpg" />
-    <img id="Img11" src="images/planes-big_1583925a.jpg" />
-    <img id="Img12" src="images/scale1.jpg" />
-    <img id="Img13" src="images/starthm4.jpg" />
-    <img id="Img14" src="images/UFO.jpg" />
+    <img id="Img0" src="images/img0.jpg" />
+    <img id="Img1" src="images/img1.jpg" />
+    <img id="Img2" src="images/img2.jpg" />
+    <img id="Img3" src="images/img3.jpg" />
+    <img id="Img4" src="images/img4.jpg" />
+    <img id="Img5" src="images/img5.jpg" />
+    <img id="Img6" src="images/img6.jpg" />
+    <img id="Img7" src="images/img7.jpg" />
+    <img id="Img8" src="images/img8.jpg" />
+    <img id="Img9" src="images/img9.jpg" />
+    <img id="Img10" src="images/img10.jpg" />
+    <img id="Img11" src="images/img11.jpg" />
+    <img id="Img12" src="images/img12.jpg" />
+    <img id="Img13" src="images/img13.jpg" />
+    <img id="Img14" src="images/img14.jpg" />
     <div id="tts" class="tts"></div>
 </body>
 </html>
