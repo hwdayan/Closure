@@ -180,10 +180,8 @@ var W, H;
                     canvas.addEventListener("click", getPosition, false);
                 canvas.addEventListener("mousedown", getPosition, false);  //IE9 has problem
                 canvas.addEventListener("mousemove", touchNoise, false);  
-                canvas.addEventListener("mouseup", mouseup, false);
-          
-                var push = false;
-               
+                canvas.addEventListener("mouseup", mouseup, false);         
+                var push = false;             
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
                 canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
                 canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
@@ -222,7 +220,7 @@ var W, H;
                 }
            
                 function touchNoise(e) {    
-                    if (push&&e.x%10==0)  //效能調整 參數高負荷較大
+                    if (push && e.targetTouches[0].pageX % 10 == 0)  //效能調整 參數高負荷較大
                     {          
                         var xlines = Math.round(3+Math.random()*5);
                         var ylines = xlines;
