@@ -198,10 +198,8 @@ var W, H;
                     {
                         if (player1 != null && player2 != null) {
                             player1.playVideoAt(22); player2.playVideoAt(1);
-                        }
-                        else
-                        {
-                            alert("player is null");
+                            player1.unMute(); player2.unMute();
+                            player1.setVolume(100); player2.setVolume(100);
                         }
                         createjs.Sound.setMute(false);
                         var t = createjs.Sound.play("/sound/beep.mp3");

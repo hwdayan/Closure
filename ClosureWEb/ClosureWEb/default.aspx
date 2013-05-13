@@ -34,10 +34,10 @@
         CID:
 	        <input id="cid" type="text" runat="server" />
         <input id="count" type="text" />
-    
-    </form>
-    <div id="player1"></div>  
+        <div id="player1"></div>  
        <div id="player2"></div>  
+    </form>
+
      <div id="tts" class="tts"></div>
 </body>
 </html>
