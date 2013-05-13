@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
       <div id="player"></div>
-
+        <input id="Button1" type="button" value="button" onclick="play()"/>
     <script>
    
         var tag = document.createElement('script');
@@ -31,7 +31,7 @@
             });
         }
         function onPlayerReady(event) {
-            event.target.playVideo();
+           
         }
 
         var done = false;
@@ -43,6 +43,10 @@
         }
         function stopVideo() {
             player.stopVideo();
+        }
+        function play()
+        {
+            player.playVideo();
         }
     </script>
     </div>
