@@ -7,13 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
-<body>
+<body onload="resizeCanvas();" style="margin:0">
     <form id="form1" runat="server">
     <div>
-      <div id="player"></div>
-        <input id="Button1" type="button" value="button" onclick="play()"/>
+      <div id="player" style="display:none"></div>
+        <canvas id ="myCanvas" style="background-color:green;display:block" />
+ 
     <script>
-   
+        function resizeCanvas() {
+           var canvas= document.getElementById("myCanvas");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -48,6 +53,10 @@
         {
             player.playVideo();
         }
+    </script>
+            <script>
+                document.addEventListener('touchstart',play, false);
+                document.addEventListener('click', play, false);
     </script>
     </div>
     </form>
