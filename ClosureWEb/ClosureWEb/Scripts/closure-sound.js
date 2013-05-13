@@ -1,8 +1,9 @@
-﻿ ﻿function soundplay(topic, vol,r1)
+﻿var radio = [1,10,12,13,14,15,16,17,20,21,22,29,30,31,32,33,34,35,36,37,38,39,40,41,56,57,79,93,97,98];
+function soundplay(topic, vol, r1)
      {
      var sound;
 
-         if (searchStringInArray("sonar", topic) != - 1) {
+         if (searchStringInArray("sonar", topic) ) {
                  var s = Math.round(Math.random() * 3);
              
                  if (s == 2) {
@@ -11,7 +12,7 @@
                  if(sound)
                  sound.setVolume(vol);
              }
-         if (searchStringInArray("beep", topic) != - 1 ) {
+         if (searchStringInArray("beep", topic) ) {
              var s = Math.round(Math.random() * 7);
         
                  if (s == 1)    sound = createjs.Sound.play("/sound/beep2.mp3");    
@@ -20,51 +21,50 @@
                    
                  if (sound)
                   sound.setVolume(vol);
-             
-             }
-         if (searchStringInArray("apollo", topic) != - 1 ) {
-             var s = Math.round(Math.random() * 8);
-        
-                 if (s == 1)
-                     sound = createjs.Sound.play("/sound/Apollo1.mp3");                
-                 if (s == 2)
-                     sound = createjs.Sound.play("/sound/Apollo2.mp3");
-                if (s == 3)
-                     sound = createjs.Sound.play("/sound/Apollo3.mp3");
-                 
-                 if (sound) {
-                     sound.setVolume(vol);
-                     sound.setPosition(Math.random() * sound.getDuration());
-                     setTimeout(function () { sound.stop(); }, 5500);
-             } 
          
              }
-        if (searchStringInArray("static", topic) != -1&&r1<0.1) {
-            var s = Math.round(Math.random() * 9);
-            var au = document.getElementById("audio15");
-            if (s == 1)
-                sound = createjs.Sound.play("/sound/static1.mp3");   
-                 if (s == 2)
-                     sound = createjs.Sound.play("/sound/static2.mp3");               
-                 if (s == 3)
-                     sound = createjs.Sound.play("/sound/static3.mp3");             
-                 if (s == 4)
-                     sound = createjs.Sound.play("/sound/static4.mp3");        
-                 if (s == 5)
-                     sound = createjs.Sound.play("/sound/static5.mp3");    
-                 if (s == 6)
-                     sound = createjs.Sound.play("/sound/static6.mp3");              
-                 if (s == 7)
-                     sound = createjs.Sound.play("/sound/static7.mp3");       
-                 if (sound) 
-            setTimeout(function () { sound.stop(); }, 950);
-  
+ 
+         if (searchStringInArray("pdgls", topic)) {
+             var s = Math.random() * 10;
+             if (s < 5&&s>2.5)
+                 communications(player1);
+             if (s<2.5)
+                 communications(player2);
+
+             function communications(player) {
+                 var state = player.getPlayerState();
+                 if (state == 2 || state == 5 || state == 0) {
+                     player == player1 ? p1sameCH = false : p2sameCH = false;
+                     if (r1 < 0.035)//change to random channel 
+                     {
+                         alert("shit happens");
+                         player.playVideoAt(Math.round(Math.random() * 97));
+                     }
+                     if (r1 > 0.035 && r1 < 0.3) //change to radio communications  
+                         player.playVideoAt(Math.round(Math.random() *radio.length-1)-1);
+                     else//change start time 
+                     {
+                         var dur = player.getDuration();
+                         var rndsec = Math.round(Math.random() * dur);
+                         player.playVideo();
+                         player.seekTo(rndsec, true);
+                     }
+                 }
              }
+         }
+      
+        if (searchStringInArray("static", topic)&&r1<0.1) {
+                var s = Math.round(Math.random() * 9);
+                var url = "/sound/static" + s + ".mp3";
+                sound = createjs.Sound.play(url);
+                if(sound)
+                     sound.setVolume(vol); 
+             }           
      }
  
  function searchStringInArray(str, strArray) {
          for (var j = 0; j < strArray.length; j++) {
-                 if (strArray[j].match(str)) return j;
+                 if (strArray[j].match(str)) return true;
              }
-       return -1;
+       return false;
     }

@@ -45,7 +45,8 @@ var W, H;
                             stage.addChild(s);
                            stage.addChild(txt);
                            fadeOut(s, 1500);
-                            fadeOut(txt, 1500);
+                           fadeOut(txt, 1500);
+                           soundplay(["pdgls"], callerID == sid ? 1 : 0.2,r1);
                            break;
                        case 3:
                            s.graphics.f(rndColor).dp(_x, _y, 12, 3, 0.75, r1 * 360);
@@ -67,13 +68,9 @@ var W, H;
                                           stage.removeChild(txt);
                                 }        
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                                document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";
-
-   
-                            //        $("#count").val(words);
-                                    
+                                document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                    
                            }
-            
+                           soundplay(["pdgls"], callerID == sid ? 1 : 0.2,r1);
                             break;
                         case 4:  //移動淡出線
                             s.alpha = 0.4;
@@ -131,14 +128,13 @@ var W, H;
                  function onComplete() {
                          stage.removeChild(txt);
                      }
-                 soundplay(["apollo","beep"], callerID == sid ? 1 : 0.08);
+                 soundplay(["beep","pdgls"], callerID == sid ? 1 : 0.08,r1);
                  break;
              case 7: //glitch
                  var lines = 15;
                  var glitchcolor = ["#36ff44", "#ff40ff", "#ffff2f", "#29ffdf", "3f52f2", "fff"];
                  var ctx = canvas.getContext("2d");
-                 var gg = document.getElementById("Img"+Math.round(Math.random()*14));
- 
+                 var gg = images[Math.round(Math.random() * 14)];
                  for (var i = 0; i < lines; i++) {
                          for (var j = 0; j < 5; j++) {
          
@@ -149,9 +145,9 @@ var W, H;
                                               H * Math.random() * r1 * 2);
                              }
                      }
-                 soundplay(["static"], 1, 0);
-                 if (Math.random() < 0.275) {
-                     var naturalWidth=gg.width==0?gg.naturalWidth:gg.width;
+                 soundplay(["static"],0.07, 0);
+                 if (Math.random() < 0.275 && gg != null) //圖片可能還沒有加載完成
+                   {  var naturalWidth=gg.width==0?gg.naturalWidth:gg.width;
                      var naturalHeight=gg.height==0?gg.naturalHeight:gg.height;
                          for (var i = 0; i < lines; i++) {
                                  for (var j = 0; j < 5; j++) {
@@ -167,7 +163,7 @@ var W, H;
                                          ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
                                      }
                              }
-                        soundplay(["static","beep"], 1,r1);
+                        soundplay(["static","beep"],1,r1);
                  }
          }
      };
@@ -179,12 +175,12 @@ var W, H;
                 if (navigator.appName == 'Microsoft Internet Explorer')
                     canvas.addEventListener("click", getPosition, false);
                 canvas.addEventListener("mousedown", getPosition, false);  //IE9 has problem
-                canvas.addEventListener("mousemove", touchNoise, false);  
+                canvas.addEventListener("mousemove", mouseNoise, false);  
                 canvas.addEventListener("mouseup", mouseup, false);         
                 var push = false;             
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
-                //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
-                //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
 
                 function getPosition(e) {
                     restbound = 0.03;
@@ -219,10 +215,17 @@ var W, H;
                     push = true;
                 }
            
-                function touchNoise(e) {    
-                    if (push && e.targetTouches[0].pageX % 10 == 0)  //效能調整 參數高負荷較大
-                    {          
-                        var xlines = Math.round(3+Math.random()*5);
+                function mouseNoise(e) {    
+                    if (push && e.x % 10 == 0)  
+                        getNoise();
+                }
+                function touchNoise(e) {
+                    if (push && targetTouches[0].pageX % 15 == 0)  //效能調整  
+                        getNoise();
+                }
+                function getNoise()
+                {
+                    var xlines = Math.round(3 + Math.random() * 5);
                         var ylines = xlines;
                         var ctx = canvas.getContext("2d");
                         var gg =canvas;
@@ -241,11 +244,7 @@ var W, H;
                                     h = H / ylines * Math.random();
                                     ctx.drawImage(gg, sx, sy, sw, sh, x, y, w, h);
                                  } }
-                            soundplay(["static"], 1, Math.random());       
-                      
-                    }
                 }
-                
                 function mouseup(e) {
                     push = false;
                 }
