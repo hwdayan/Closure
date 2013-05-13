@@ -12,7 +12,7 @@
     <div>
       <div id="player" style="display:none"></div>
         <canvas id ="myCanvas" style="background-color:green;display:block" />
- 
+        <video  id="video" src="sound/video.mp4" controls="controls" />
     <script>
         function resizeCanvas() {
            var canvas= document.getElementById("myCanvas");
@@ -53,8 +53,13 @@
         {
             player.playVideo();
         }
+        function play2() {
+            document.getElementById("video").play();
+        }
     </script>
             <script>
+                document.addEventListener('touchstart', play2, false);
+                document.addEventListener('click', play2, false);
                 document.addEventListener('touchstart',play, false);
                 document.addEventListener('click', play, false);
     </script>
