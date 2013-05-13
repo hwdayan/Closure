@@ -1,18 +1,15 @@
 ﻿	 ﻿body {
 	     background-color:black;              
 	 }
-	 img
-	 {
-	     visibility:hidden;
-	     position:absolute;
-         display:none;
-	 }
 	 canvas
 	 {   
         background-color:black;  
+          display:none;
+	     visibility:hidden;
 	 }
 	 form
-	 {
+	 { 
+         position:absolute;
          display:none;
 	     visibility:hidden;
 	 }
