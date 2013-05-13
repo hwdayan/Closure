@@ -179,8 +179,8 @@ var W, H;
                 canvas.addEventListener("mouseup", mouseup, false);         
                 var push = false;             
                 canvas.addEventListener('touchstart', getPositionIpad, false); //for Ipad or Iphone
-                canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
-                canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
+                //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
+                //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
 
                 function getPosition(e) {
                     restbound = 0.03;
@@ -199,7 +199,7 @@ var W, H;
                         if (player1 != null && player2 != null) {
                             player1.playVideoAt(22); player2.playVideoAt(1);
                         }
-                        elser
+                        else
                         {
                             alert("player is null");
                         }
