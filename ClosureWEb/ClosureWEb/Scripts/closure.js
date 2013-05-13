@@ -196,10 +196,11 @@ var W, H;
                   
                     if (beeped<12)//First sound must be invoke by user in ipad
                     {
-                        if (player1 != null && player2 != null) {
-                            player1.playVideo(); player2.playVideo();
-                            player1.unMute(); player2.unMute();
-                            player1.setVolume(100); player2.setVolume(100);
+                        var videos = document.getElementsByTagName("video");
+                        for (var i = 0; i < videos.length; i++) {
+                            videos[i].play();
+                            videos[i].muted = false;
+                            videos[i].volume = 1;
                         }
                         createjs.Sound.setMute(false);
                         var t = createjs.Sound.play("/sound/beep.mp3");
