@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
       <div id="player" style="display:none"></div>
-        <canvas id ="myCanvas" style="background-color:green;display:block" />
+     <%--   <canvas id ="myCanvas" style="background-color:green;display:block" />--%>
         <video  id="video" src="sound/video.mp4" controls="controls" />
     <script>
         function resizeCanvas() {
