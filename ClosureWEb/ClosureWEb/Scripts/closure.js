@@ -197,7 +197,11 @@ var W, H;
                     if (beeped<8)//First sound must be invoke by user in ipad
                     {
                         if (player1 != null && player2 != null) {
-                            player1.playVideoAt(1); player2.playVideoAt(1);
+                            player1.playVideoAt(22); player2.playVideoAt(1);
+                        }
+                        elser
+                        {
+                            alert("player is null");
                         }
                         createjs.Sound.setMute(false);
                         var t = createjs.Sound.play("/sound/beep.mp3");
@@ -220,7 +224,7 @@ var W, H;
                         getNoise();
                 }
                 function touchNoise(e) {
-                    if (push && e.targetTouches[0].pageX % 15 == 0)  //效能調整  
+                    if (push && e.targetTouches[0].pageX % 100 == 0)  //效能調整  
                         getNoise();
                 }
                 function getNoise()
