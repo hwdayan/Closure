@@ -192,18 +192,18 @@ var W, H;
                      push = true;                 
                 }
                 var beeped = 0;
-
                 function getPositionIpad(e) {
-                    restbound = 0.5;
-                    restime = 10000;
-                    fire = true;
-                    if (beeped<15)//First sound must be invoke by user in ipad
+                  
+                    if (beeped<8)//First sound must be invoke by user in ipad
                     {
+                        if (player1 != null && player2 != null) {
+                            player1.playVideoAt(1); player2.playVideoAt(1);
+                        }
                         createjs.Sound.setMute(false);
                         var t = createjs.Sound.play("/sound/beep.mp3");
                         t.mute(false);
                         t.setVolume(1);
-                       beeped++;
+                        beeped++;
                     }
                     for (var i = 0; i < e.targetTouches.length; i++) {
                         if (e.targetTouches.length > 2) 
@@ -220,7 +220,7 @@ var W, H;
                         getNoise();
                 }
                 function touchNoise(e) {
-                    if (push && targetTouches[0].pageX % 15 == 0)  //效能調整  
+                    if (push && e.targetTouches[0].pageX % 15 == 0)  //效能調整  
                         getNoise();
                 }
                 function getNoise()

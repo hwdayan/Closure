@@ -13,7 +13,7 @@ function soundplay(topic, vol, r1)
                  sound.setVolume(vol);
              }
          if (searchStringInArray("beep", topic) ) {
-             var s = Math.round(Math.random() * 7);
+             var s = Math.round(Math.random() * 10);
         
                  if (s == 1)    sound = createjs.Sound.play("/sound/beep2.mp3");    
                 
@@ -37,7 +37,6 @@ function soundplay(topic, vol, r1)
                      player == player1 ? p1sameCH = false : p2sameCH = false;
                      if (r1 < 0.035)//change to random channel 
                      {
-                         alert("shit happens");
                          player.playVideoAt(Math.round(Math.random() * 97));
                      }
                      if (r1 > 0.035 && r1 < 0.3) //change to radio communications  

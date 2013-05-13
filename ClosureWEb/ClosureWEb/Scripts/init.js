@@ -1,10 +1,6 @@
 ﻿var canvas, stage, exportRoot;
 var images = new Array();
-window.onload = function () {
-    setTimeout(function () {
-        window.scrollTo(0, 1);
-    }, 100);
-}//隱藏網址列
+
 function init() {
     loadALLimages();
     canvas = document.getElementById("canvas");

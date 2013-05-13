@@ -123,7 +123,6 @@
     <Content Include="sound\static3.mp3" />
     <Content Include="sound\static4.mp3" />
     <Content Include="sound\static5.mp3" />
-    <Content Include="sound\static6.mp3" />
     <Content Include="sound\static7.mp3" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
