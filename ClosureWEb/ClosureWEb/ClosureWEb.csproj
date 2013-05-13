@@ -124,6 +124,7 @@
     <Content Include="sound\static4.mp3" />
     <Content Include="sound\static5.mp3" />
     <Content Include="sound\static7.mp3" />
+    <Content Include="sound\video.mp4" />
     <Content Include="testPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

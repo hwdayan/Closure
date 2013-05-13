@@ -36,8 +36,9 @@
         <input id="count" type="text" />
         <div id="player1"></div>  
        <div id="player2"></div>  
+      <video id="video" src ="\sound\video.mp4 "></video>
     </form>
-
+     
      <div id="tts" class="tts"></div>
 </body>
 </html>

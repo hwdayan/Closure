@@ -182,7 +182,7 @@ var W, H;
                 //canvas.addEventListener('touchmove', touchNoise, false); //for ipad or Iphone
                 //canvas.addEventListener('touchend', touchEnd, false); //for ipad or Iphone
 
-                function getPosition(e) {
+                function getPosition(e) {      
                     restbound = 0.03;
                     restime = 6500;
                     fire =true;
@@ -196,12 +196,7 @@ var W, H;
                   
                     if (beeped<12)//First sound must be invoke by user in ipad
                     {
-                        var videos = document.getElementsByTagName("video");
-                        for (var i = 0; i < videos.length; i++) {
-                            videos[i].play();
-                            videos[i].muted = false;
-                            videos[i].volume = 1;
-                        }
+                        document.getElementById("video").play();
                         createjs.Sound.setMute(false);
                         var t = createjs.Sound.play("/sound/beep.mp3");
                         t.mute(false);
