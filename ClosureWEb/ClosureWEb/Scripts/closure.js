@@ -194,10 +194,10 @@ var W, H;
                 var beeped = 0;
                 function getPositionIpad(e) {
                   
-                    if (beeped<8)//First sound must be invoke by user in ipad
+                    if (beeped<12)//First sound must be invoke by user in ipad
                     {
                         if (player1 != null && player2 != null) {
-                            player1.playVideoAt(22); player2.playVideoAt(1);
+                            player1.playVideo(); player2.playVideo();
                             player1.unMute(); player2.unMute();
                             player1.setVolume(100); player2.setVolume(100);
                         }
