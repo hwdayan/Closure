@@ -70,7 +70,7 @@ var W, H;
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
                                 document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                    
                            }
-                           soundplay(["pdgls"], callerID == sid ? 1 : 0.2,r1);
+                           soundplay(["pdgls","apollo"], callerID == sid ? 1 : 0.2,r1);
                             break;
                         case 4:  //移動淡出線
                             s.alpha = 0.4;

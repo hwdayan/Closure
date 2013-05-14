@@ -114,6 +114,10 @@
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-1.0.1.js" />
     <Content Include="Scripts\jquery.signalR-1.0.1.min.js" />
+    <Content Include="sound\apollo1.mp3" />
+    <Content Include="sound\apollo2.mp3" />
+    <Content Include="sound\apollo3.mp3" />
+    <Content Include="sound\apollo4.mp3" />
     <Content Include="sound\beep.mp3" />
     <Content Include="sound\beep2.mp3" />
     <Content Include="sound\beep3.mp3" />
@@ -124,7 +128,6 @@
     <Content Include="sound\static4.mp3" />
     <Content Include="sound\static5.mp3" />
     <Content Include="sound\static7.mp3" />
-    <Content Include="sound\video.mp4" />
     <Content Include="testPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

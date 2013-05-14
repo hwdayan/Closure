@@ -23,7 +23,16 @@ function soundplay(topic, vol, r1)
                   sound.setVolume(vol);
          
              }
- 
+         if (searchStringInArray("apollo", topic)) {
+             var s = Math.round(Math.random() * 8);
+             var url = "/sound/apollo" + s + ".mp3";
+             sound = createjs.Sound.play(url);
+             if (sound) {
+                 sound.setVolume(vol);
+                 sound.setPosition(Math.random() * sound.getDuration());
+                 setTimeout(function () { sound.stop(); }, 5500);
+             }
+         }
          if (searchStringInArray("pdgls", topic)) {
              var s = Math.random() * 10;
              if (s < 5&&s>2.5)
