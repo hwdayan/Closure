@@ -11,9 +11,9 @@
     <form id="form1" runat="server">
         <div>
             <div id="holder"></div>
-            <div id="player" style="display: none"></div>
+            <div id="player"></div>
             <%--   <canvas id ="myCanvas" style="background-color:green;display:block" />--%>
-            <video width="320" height="240" controls>
+            <video  id="movie" width="320" height="240" controls>
                 <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4"/>          
                 Your browser does not support the video tag.
             </video>
@@ -57,40 +57,14 @@
                     player.playVideo();
                 }
                 function play2() {
-                    document.getElementById("video").play();
+                    document.getElementById("movie").play();
                 }
             </script>
             <script>
-                document.addEventListener('touchstart', initVideo, false);
-                document.addEventListener('click', initVideo, false);
+                document.addEventListener('touchstart',play2, false);
+                document.addEventListener('click', play2, false);
                 document.addEventListener('touchstart', play, false);
                 document.addEventListener('click', play, false);
-
-                var vid = document.createElement('video');
-                vid.src = '/sound/video.mp4';
-                document.getElementById('holder').appendChild(vid);
-
-                //this function should be called on a click event handler otherwise video won't start loading
-                function initVideo() {
-                    vid.play(); //start loading, didn't used `vid.load()` since it causes problems with the `ended` event
-
-                    if (vid.readyState !== 4) { //HAVE_ENOUGH_DATA
-                        vid.addEventListener('canplaythrough', onCanPlay, false);
-                        vid.addEventListener('load', onCanPlay, false); //add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
-                        setTimeout(function () {
-                            vid.pause(); //block play so it buffers before playing
-                        }, 1); //it needs to be after a delay otherwise it doesn't work properly.
-                    } else {
-                        //video is ready
-                    }
-                }
-
-                function onCanPlay() {
-                    vid.removeEventListener('canplaythrough', onCanPlay, false);
-                    vid.removeEventListener('load', onCanPlay, false);
-                    //video is ready
-                    vid.play();
-                }
             </script>
 
         </div>
