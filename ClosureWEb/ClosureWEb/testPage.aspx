@@ -14,10 +14,10 @@
             <div id="player" style="display: none"></div>
             <%--   <canvas id ="myCanvas" style="background-color:green;display:block" />--%>
             <video width="320" height="240" controls>
-                <source src="/sound/video.mp4" type="video/mp4"/>          
+                <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4"/>          
                 Your browser does not support the video tag.
             </video>
-        <%--    <script>
+            <script>
                 function resizeCanvas() {
                     var canvas = document.getElementById("myCanvas");
                     canvas.width = window.innerWidth;
@@ -91,7 +91,7 @@
                     //video is ready
                     vid.play();
                 }
-            </script>--%>
+            </script>
 
         </div>
     </form>
