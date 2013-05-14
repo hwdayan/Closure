@@ -6,17 +6,18 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
 </head>
-<body style="margin: 0">
+<body onload="resizeCanvas();" style="margin: 0">
     <form id="form1" runat="server">
         <div>
-            <div id="holder"></div>
-            <div id="player"></div>
-            <%--   <canvas id ="myCanvas" style="background-color:green;display:block" />--%>
-            <video  id="movie" width="320" height="240" controls>
-                <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4"/>          
-                Your browser does not support the video tag.
-            </video>
+        
+            <div id="player"> </div> 
+    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"  data-setup="{}">
+    <source src="https://www.youtube.com/watch?v=pYJahWh9c8U" type='video/youtube' />
+  </video>
+                <canvas id ="myCanvas" style="background-color:green;display:block" />
             <script>
                 function resizeCanvas() {
                     var canvas = document.getElementById("myCanvas");
@@ -40,7 +41,8 @@
                     });
                 }
                 function onPlayerReady(event) {
-
+                    $("#player").trigger('click');
+                    $("#player").trigger('touchstart');
                 }
 
                 var done = false;
@@ -59,12 +61,17 @@
                 function play2() {
                     document.getElementById("movie").play();
                 }
+                function play3() {
+
+                }
             </script>
             <script>
+                
                 document.addEventListener('touchstart',play2, false);
                 document.addEventListener('click', play2, false);
                 document.addEventListener('touchstart', play, false);
                 document.addEventListener('click', play, false);
+               
             </script>
 
         </div>
