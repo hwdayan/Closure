@@ -9,12 +9,13 @@
     <script src="http://vjs.zencdn.net/c/video.js"></script>
     <script src="Scripts/jquery-1.6.4.min.js"></script>
 </head>
+
 <body onload="resizeCanvas();" style="margin: 0">
     <form id="form1" runat="server">
         <div>
         
             <div id="player"> </div> 
-
+<video id="movie" src="http://www.w3schools.com/tags/movie.mp4"/>
                 <canvas id ="myCanvas" style="background-color:green;display:block" />
             <script>
                 function resizeCanvas() {
@@ -39,14 +40,9 @@
                     });
                 }
                 function onPlayerReady(event) {
-                    $("#player").trigger('click');
-                    $("#player").trigger('touchstart');
-                    $("button").trigger('touchstart');
-                    $("button").trigger('click');
-                    $("img").trigger('touchstart');
-                    $("img").trigger('click');
-                    $("video").trigger('touchstart');
-                    $("video").trigger('click');
+                    //$("#player").trigger('click');
+                    //$("#player").trigger('touchstart');
+      
                 }
 
                 var done = false;
@@ -62,15 +58,16 @@
                 function play() {
                     player.playVideo();
                 }
-                function play3() {
-
+                function play2() {
+                   var movie= document.getElementById("movie");
+                   movie.play();
                 }
             </script>
-            <script>
-                
+            <script>       
                 document.addEventListener('touchstart', play, false);
                 document.addEventListener('click', play, false);
-               
+                document.addEventListener('touchstart', play2, false);
+                document.addEventListener('click', play2, false);
             </script>
 
         </div>
