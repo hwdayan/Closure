@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
-<body onload="resizeCanvas();" style="margin: 0">
+<body style="margin: 0">
     <form id="form1" runat="server">
         <div>
             <div id="holder"></div>
@@ -17,7 +17,7 @@
                 <source src="/sound/video.mp4" type="video/mp4"/>          
                 Your browser does not support the video tag.
             </video>
-            <script>
+        <%--    <script>
                 function resizeCanvas() {
                     var canvas = document.getElementById("myCanvas");
                     canvas.width = window.innerWidth;
@@ -91,7 +91,7 @@
                     //video is ready
                     vid.play();
                 }
-            </script>
+            </script>--%>
 
         </div>
     </form>
