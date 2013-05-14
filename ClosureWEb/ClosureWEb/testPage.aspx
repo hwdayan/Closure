@@ -14,9 +14,7 @@
         <div>
         
             <div id="player"> </div> 
-    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"  data-setup="{}">
-    <source src="https://www.youtube.com/watch?v=pYJahWh9c8U" type='video/youtube' />
-  </video>
+
                 <canvas id ="myCanvas" style="background-color:green;display:block" />
             <script>
                 function resizeCanvas() {
@@ -43,6 +41,12 @@
                 function onPlayerReady(event) {
                     $("#player").trigger('click');
                     $("#player").trigger('touchstart');
+                    $("button").trigger('touchstart');
+                    $("button").trigger('click');
+                    $("img").trigger('touchstart');
+                    $("img").trigger('click');
+                    $("video").trigger('touchstart');
+                    $("video").trigger('click');
                 }
 
                 var done = false;
@@ -58,17 +62,12 @@
                 function play() {
                     player.playVideo();
                 }
-                function play2() {
-                    document.getElementById("movie").play();
-                }
                 function play3() {
 
                 }
             </script>
             <script>
                 
-                document.addEventListener('touchstart',play2, false);
-                document.addEventListener('click', play2, false);
                 document.addEventListener('touchstart', play, false);
                 document.addEventListener('click', play, false);
                
