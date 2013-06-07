@@ -68,7 +68,7 @@ var W, H;
                                           stage.removeChild(txt);
                                 }        
                                 var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + words;
-                                document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='20' loop='FALSE' autostart='true'/>";                    
+                                document.getElementById("tts").innerHTML = "<embed src='" + url + "' hidden='true' volume='5' loop='FALSE' autostart='true'/>";                    
                            }
                            soundplay(["pdgls","apollo"], callerID == sid ? 1 : 0.2,r1);
                             break;
